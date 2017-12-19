@@ -103,6 +103,7 @@ $(document).ready(function(){
 
 
 <!-- 20171031 -->
+<#-- 
 <section class="top_link">
 	<a href="/wx/doctor/list">
 	<dl class="top_l_left">
@@ -111,6 +112,40 @@ $(document).ready(function(){
 		<dd>视频咨询医生、药师</dd>
 	</dl>
 	</a>
+	<section class="top_l_right">
+		<a href="http://www.jkwin.com.cn/ystm/mainPage.do?method=mainPage&regWayCode=ZSM_WX" >
+		<dl>
+			<dt><img src="/wx/images/doctor/i2.png"></dt>
+			<dd>预约挂号</dd>
+			<dd>三甲医院不用愁</dd>
+		</dl>
+		</a>
+		<a href="/wx/health/u"><dl>
+			<dt><img src="/wx/images/doctor/i3.png"></dt>
+			<dd>我的健康</dd>
+			<dd>健康信息握在手</dd>
+		</dl>
+		</a>
+	</section>
+</section>
+ -->
+ <section class="top_link">
+ 	<section class="top_l_left">
+	<a href="/wx/doctor/list">
+	<dl class="">
+		<dt><img src="/wx/images/doctor/i1.png"></dt>
+		<dd>咨询问诊</dd>
+		<dd>视频咨询医生、药师</dd>
+	</dl>
+	</a>
+	<a href="#">
+	<dl class="">
+		<dt><img src="/wx/images/doctor/i1.png"></dt>
+		<dd>处方专区</dd>
+		<dd>在线咨询处方单</dd>
+	</dl>
+	</a>
+	</section>
 	<section class="top_l_right">
 		<a href="http://www.jkwin.com.cn/ystm/mainPage.do?method=mainPage&regWayCode=ZSM_WX" >
 		<dl>

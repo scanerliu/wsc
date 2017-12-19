@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zxsm.wsc.common.DjKeys;
+import com.zxsm.wsc.common.WebUtils;
 import com.zxsm.wsc.common.Controllers.DjBaseController;
 import com.zxsm.wsc.common.UtilsTools.CookiesUtil;
 import com.zxsm.wsc.common.tencent.controller.DjUserQRcodeTools;
@@ -102,7 +103,7 @@ public class DjDoctorController extends DjBaseController
 
 	// 医生分类
 	@RequestMapping("/cate")
-	public String cate(DjDoctorParam param,ModelMap map)
+	public String cate(DjDoctorParam param,ModelMap map,HttpServletRequest req)
 	{
 		if(!isLogin())
 			return URL_RedirectLogin;
@@ -116,10 +117,13 @@ public class DjDoctorController extends DjBaseController
 		searchMap.put(DjDoctor.sIsOnline, true);
 		map.addAttribute("doctor_list", doctorSvs.find(searchMap));
 		map.addAttribute("docnavi", djNaviItemSvs.findDoctorNavi());
-		JsTicket jsTicket = qrcodeTools.getJsTicketBody("http://m.zsmyao.com/wx/doctor/cate");
-		jsTicket.setTitle("名医咨询");
-		jsTicket.setLink("http://m.zsmyao.com/wx/doctor/cate");
-		map.addAttribute("share_param",jsTicket);
+		if(WebUtils.isWechatClient(req))
+		{
+			JsTicket jsTicket = qrcodeTools.getJsTicketBody("http://m.zsmyao.com/wx/doctor/cate");
+			jsTicket.setTitle("名医咨询");
+			jsTicket.setLink("http://m.zsmyao.com/wx/doctor/cate");
+			map.addAttribute("share_param",jsTicket);
+		}
 		
 		return "/wx/doctor/doctor_cate_1";
 	}
