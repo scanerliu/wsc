@@ -1,0 +1,401 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: '微软雅黑';
+}
+
+img {
+  border: 0;
+}
+
+.drug {
+  height: 100vh;
+  overflow: auto;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+  background-image: url("../images/bg.png");
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.add_drug {
+  width: 1200px;
+  margin: 60px auto 0;
+  background-color: #fff;
+}
+
+.add_drug_l {
+  width: 790px;
+  height: 100%;
+  float: left;
+}
+
+.add_drug_type {
+  height: 26px;
+  margin-top: 60px;
+}
+
+.add_drug_tp {
+  float: right;
+  width: 60px;
+  height: 26px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  color: #333333;
+  font-size: 16px;
+  margin-right: 60px;
+  text-align: center;
+}
+
+.add_drug_title {
+  text-align: center;
+}
+
+.add_drug_title h4 {
+  margin: 0;
+  font-size: 30px;
+  font-family: '微软雅黑';
+}
+
+.add_drug_title p {
+  margin: 0;
+  font-size: 24px;
+  font-family: '微软雅黑';
+}
+
+.add_drug_info, .add_drug_list {
+  padding: 0 20px;
+}
+
+.add_drug_info {
+  margin-top: 30px;
+}
+
+.add_drug_info_no {
+  font-size: 16px;
+  font-family: '黑体';
+  font-weight: 600;
+}
+
+.add_drug_from {
+  margin: 20px 0;
+}
+
+.add_drug_in {
+  margin-right: 50px;
+}
+
+.staff_space1 {
+  margin-right: 245px!important;
+}
+
+.add_drug_in span {
+  font-size: 16px;
+}
+
+.add_drug_in input {
+  margin-left: 5px;
+  border-width: 0 0 1px 0;
+  border-color: #333;
+  width: 90px;
+  outline: none;
+}
+
+.add_drug_in1 {
+  width: calc(100% - 92px)!important;
+}
+
+.add_drug_in2 {
+  width: calc(100% - 108px)!important;
+}
+
+.add_drug_in3 {
+  background-color: #f3e5f6;
+}
+
+.add_drug_list {
+  margin-top: 25px;
+}
+
+.add_drug_list:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.add_drug_list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.add_drug_list li {
+  list-style: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 10px 0;
+}
+
+.add_drug_list li:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.add_drug_item {
+  float: left;
+  width: calc(100% - 160px);
+}
+
+.add_drug_item_name {
+  font-size: 16px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.add_drug_item_explain {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+  text-indent: 10px;
+}
+
+.add_drug_operation {
+  float: left;
+  width: 160px;
+  line-height: 80px;
+  text-align: center;
+}
+
+.add_drug_operation a {
+  margin: 0 10px;
+}
+
+.add_drug_staff {
+  padding: 0 20px;
+  height: 112px;
+  background-color: #f3e5f6;
+}
+
+.staff_space {
+  padding-top: 24px;
+}
+
+.add_drug_r {
+  width: 410px;
+  height: 100%;
+  float: left;
+}
+
+.add_drug_head {
+  height: 68px;
+  background-color: #f3e5f6;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.add_drug_head img {
+  margin: 22px 10px 22px 22px;
+  vertical-align: middle;
+}
+
+.add_drug_choice {
+  padding: 0 20px;
+}
+
+.prompt {
+  color: red;
+}
+
+.add_drug_choice p {
+  display: inline-block;
+}
+
+.add_drug_choice select {
+  margin: 20px 0 20px 5px;
+  cursor: pointer;
+  width: 150px;
+  height: 26px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.add_drug_search {
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.add_drug_search:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.add_drug_search input {
+  float: left;
+  width: 312px;
+  height: 30px;
+  font-size: 16px;
+  text-indent: 10px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.add_drug_search_btn {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  width: 46px;
+  height: 30px;
+  text-align: center;
+  background-color: #5a4496;
+}
+
+.add_drug_search_btn img {
+  margin-top: 6px;
+}
+
+.add_drug_head span {
+  vertical-align: middle;
+}
+
+.add_drug_entry {
+  padding-left: 20px;
+}
+.add_drug_entry:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.add_drug_entry ul {
+  margin: 0;
+  padding: 0;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.add_drug_entry li {
+  cursor: pointer;
+  padding-bottom: 10px;
+  list-style: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 10px 0;
+}
+
+.add_drug_entry li:after {
+  content: "";
+  display: block;
+  clear:both;
+}
+
+.add_drug_entry li img {
+  vertical-align: middle;
+}
+
+.add_drug_detail {
+  display: inline-block;
+}
+
+.add_drug_detail {
+  vertical-align: middle;
+}
+
+.add_drug_detail p {
+  margin: 4px 0;
+}
+
+.add_drug_remarks {
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+.add_drug_remarks_oper {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.add_drug_remarks_oper button, .add_drug_submit button {
+  cursor: pointer;
+  width: 140px;
+  height: 34px;
+  font-size: 16px;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #5a4496;
+  outline: none;
+}
+
+.add_drug_remarks_space {
+  margin-bottom: 14px;
+}
+
+.add_drug_remarks_space span, .add_drug_remarks_space textarea {
+  vertical-align: top;
+}
+
+.add_drug_remarks_space textarea {
+  margin-left: 5px;
+  width: 308px;
+  height: 60px;
+  font-size: 16px;
+  resize: none;
+  border: 1px solid #e0e0e0;
+  outline: none;
+}
+
+.add_drug_bottom {
+  width: 1200px;
+  margin: 30px auto 130px;
+}
+
+.add_drug_user {
+  padding: 0 20px;
+  float: left;
+}
+
+.add_drug_user p {
+  display: inline-block;
+  margin: 8px 0;
+}
+
+.add_drug_user select {
+  cursor: pointer;
+  width: 150px;
+  height: 26px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.add_drug_submit {
+  display: inline-block;
+  float: left;
+}
+
+.add_drug_submit1 {
+  margin-left: 50px;
+  color: #333!important;
+  background-color: #f5f5f5!important;
+}
