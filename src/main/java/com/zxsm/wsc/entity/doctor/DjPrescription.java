@@ -30,48 +30,48 @@ public class DjPrescription extends DjBaseEntity {
 	private Long id;
 	
 	// 处方单号
-	@Column
-	private String no;
+	@Column(length = 100)
+	private String preNo;
 	
 	// 科别
-	@Column
+	@Column(length = 50)
 	private String cat;
 	
 	// 床号
-	@Column
+	@Column(length = 100)
 	private String bedNo;
 	
 	// 门诊号
-	@Column
+	@Column(length = 100)
 	private String outpatientNo;
 	
 	// 日期
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date Date;
+	private Date preDate;
 	
 	// 姓名
-	@Column
-	private String name;
+	@Column(length = 20)
+	private String patName;
 	
 	// 性别
-	@Column
+	@Column(length = 6)
 	private String sex;
 	
 	// 年龄
-	@Column
+	@Column(length = 6)
 	private String age;
 	
 	// 体重
-	@Column
+	@Column(length = 10)
 	private String weight;
 	
 	// 过敏源
-	@Column
+	@Column(length = 50)
 	private String allergy;
 	
 	// 初步诊断
-	@Column
+	@Column(length = 200)
 	private String diagnosis;
 	
 	// 医师Id
@@ -79,7 +79,7 @@ public class DjPrescription extends DjBaseEntity {
 	private Long docId;
 	
 	// 医师签名
-	@Column
+	@Column(length = 200)
 	private String docImg;
 	
 	// 药师id
@@ -87,20 +87,24 @@ public class DjPrescription extends DjBaseEntity {
 	private Long phaId;
 	
 	// 药师签名
-	@Column
+	@Column(length = 200)
 	private String phaImg;
 	
 	// 配药人员
-	@Column
+	@Column(length = 10)
 	private String pharmacist;
 	
 	// 核对发药
-	@Column
-	private String check;
+	@Column(length = 10)
+	private String checker;
 	
 	// 门店
-	@Column
+	@Column(length = 10)
 	private String store;
+	
+	// 门店id
+	@Column
+	private Long storeId;
 	
 	// 药品列表
     @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
@@ -115,12 +119,12 @@ public class DjPrescription extends DjBaseEntity {
 		this.id = id;
 	}
 
-	public String getNo() {
-		return no;
+	public String getPreNo() {
+		return preNo;
 	}
 
-	public void setNo(String no) {
-		this.no = no;
+	public void setPreNo(String preNo) {
+		this.preNo = preNo;
 	}
 
 	public String getCat() {
@@ -147,20 +151,20 @@ public class DjPrescription extends DjBaseEntity {
 		this.outpatientNo = outpatientNo;
 	}
 
-	public Date getDate() {
-		return Date;
+	public Date getPreDate() {
+		return preDate;
 	}
 
-	public void setDate(Date date) {
-		Date = date;
+	public void setPreDate(Date preDate) {
+		this.preDate = preDate;
 	}
 
-	public String getName() {
-		return name;
+	public String getPatName() {
+		return patName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPatName(String patName) {
+		this.patName = patName;
 	}
 
 	public String getSex() {
@@ -243,12 +247,12 @@ public class DjPrescription extends DjBaseEntity {
 		this.pharmacist = pharmacist;
 	}
 
-	public String getCheck() {
-		return check;
+	public String getChecker() {
+		return checker;
 	}
 
-	public void setCheck(String check) {
-		this.check = check;
+	public void setChecker(String checker) {
+		this.checker = checker;
 	}
 
 	public String getStore() {
@@ -257,6 +261,14 @@ public class DjPrescription extends DjBaseEntity {
 
 	public void setStore(String store) {
 		this.store = store;
+	}
+
+	public Long getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(Long storeId) {
+		this.storeId = storeId;
 	}
 
 	public List<DjDrug> getDrugs() {
