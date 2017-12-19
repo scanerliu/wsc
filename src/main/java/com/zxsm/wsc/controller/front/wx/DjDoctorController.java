@@ -273,6 +273,30 @@ public class DjDoctorController extends DjBaseController
 		}
 		return user;
 	}
+	/**
+	 * 开处方
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/prescribe")
+	public String prescribe(DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
+		map.addAttribute("doctor",djDoctor);
+		return "/wx/doctor/doctor_prescribe";
+	}
 	//
 	//	//基本资料
 	//	@RequestMapping(value="/profile/save")
