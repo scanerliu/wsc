@@ -96,11 +96,12 @@ function __doPostBack(eventTarget, eventArgument) {
   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
     <tbody><tr class="odd_bg">
       <th width="6%">选择</th>
-      <th width="20%" align="center">账号</th>
-      <th align="left">医生名称</th>
-      <th align="left" width="20%">账号</th>
-      <th align="left" width="20%">状态</th>
-      <th align="center" width="20%">操作</th>
+      <th width="10%" align="center">账号</th>
+      <th align="left" width="10%">医生名称</th>
+      <th align="left">科室</th>
+      <th align="left" width="10%">医生类别</th>
+      <th align="left" width="6%">状态</th>
+      <th align="center" width="10%">操作</th>
     </tr>
     
     <#if doctor_page??>
@@ -115,6 +116,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td align="center">${item.username!''}</td>
         <td><a href="/management/doctor/edit?id=${item.id?c}">${item.name!''}</a></td>
         <td>${item.cat!''}</td>
+        <td><#if item.uType??><#if item.uType==0>医生<#else>药师</#if></#if></td>
         <td><#if item.isOnline??><#if item.isOnline==true>在线<#else>离线</#if></#if></td>
         <#--
         <td><input name="sortId" type="text" value="${item.sortId!''}" class="sort" onkeydown="return checkNumber(event);"></td>

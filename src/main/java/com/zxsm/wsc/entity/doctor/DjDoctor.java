@@ -57,9 +57,17 @@ public class DjDoctor extends DjBaseEntity
 	@Column
 	private Integer type;
 	
+	// 身份类别:0 医生 1： 药师
+	@Column
+	private Integer uType = 0;
+	
 	// 头像
 	@Column(length = 100)
 	private String headImgUrl;
+	
+	// 签名
+	@Column(length = 100)
+	private String autograph;
 	
 	// 工作qq
 	@Column(length = 20)
@@ -174,12 +182,28 @@ public class DjDoctor extends DjBaseEntity
 		this.type = type;
 	}
 
+	public Integer getuType() {
+		return uType;
+	}
+
+	public void setuType(Integer uType) {
+		this.uType = uType;
+	}
+
 	public String getHeadImgUrl() {
 		return headImgUrl;
 	}
 
 	public void setHeadImgUrl(String headImgUrl) {
 		this.headImgUrl = headImgUrl;
+	}
+
+	public String getAutograph() {
+		return autograph;
+	}
+
+	public void setAutograph(String autograph) {
+		this.autograph = autograph;
 	}
 
 	public String getQq() {

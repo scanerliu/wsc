@@ -142,9 +142,28 @@ function checkDiy(object){
     </dd>
   </dl>
   <dl>
+    <dt>医生类别</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <span style="display: none;">
+          <input type="radio" name="uType" value="0" <#if doctor?? || !doctor.uType?? || doctor.uType==0>checked="checked"</#if>><label>医生</label>
+          <input type="radio" name="uType" value="1" <#if doctor?? && doctor.uType?? && doctor.uType==1>checked="checked"</#if>><label>药师</label>
+        </span>
+      </div>
+    </dd>
+  </dl>
+  <dl>
     <dt>头像</dt>
     <dd>
       <input name="headImgUrl" type="text" value="<#if doctor??>${doctor.headImgUrl!''}</#if>" class="input normal upload-path">
+      <div class="upload-box upload-img"></div>
+      <div class="photo-list"></div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>签名</dt>
+    <dd>
+      <input name="autograph" type="text" value="<#if doctor??>${doctor.autograph!''}</#if>" class="input normal upload-path">
       <div class="upload-box upload-img"></div>
       <div class="photo-list"></div>
     </dd>
