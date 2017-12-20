@@ -6,10 +6,10 @@
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/date.css">
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-date.js"></script>
+    <link href="/wx/css/doctor_drug.css" rel="stylesheet" type="text/css" />
+    <link href="/wx/css/date.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/wx/js/jquery-date.js"></script>
     <title>审核</title>
 </head>
 
@@ -17,18 +17,18 @@
 <div class="drug">
     <div class="add_drug lssue">
         <div class="lssue_logo">
-            <img src="./img/logo.png" alt="">
-            <h4>真善美执业医师</h4>
+            <img src="/wx/images/drug/logo.png" alt="">
+            <h4>真善美执业药师</h4>
         </div>
         <div class="examine">
             <div class="examine_l">
                 <div class="examine_info">
-                    <p>审核编号：<span>1701245625246</span></p>
-                    <p>申请账号：<span>上海城店</span></p>
-                    <p>时间：<span>2017-12-15 18:58</span></p>
+                    <p>审核编号：<span>${pre.preNo!''}</span></p>
+                    <p>申请账号：<span>${pre.store!''}</span></p>
+                    <p>时间：<span>${pre.preDate}</span></p>
                 </div>
                 <div class="examine_lssue">
-                    <img src="./img/lssue.png" alt="">
+                    <img src="${pre.imgUrl!''}" alt="">
                 </div>
 
                 <div class="add_drug_staff bg_important">
@@ -36,7 +36,7 @@
                         <label class="add_drug_in staff_space1">
                             <span>医师:</span>
                             <input id="drug_physician" class="bg_important" type="text">
-                            <img src="./img/name.png" alt="">
+                            <img src="/wx/images/drug/name.png" alt="">
                         </label>
                     </div>
                 </div>
@@ -45,11 +45,11 @@
             <div class="examine_r">
                 <p class="examine_title">审核结果:</p>
                 <label class="examine_click">
-                    <img src="./img/not_chick.png" alt="">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
                     <span>通过</span>
                 </label>
                 <label class="examine_click">
-                    <img src="./img/not_chick.png" alt="">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
                     <span>不通过</span>
                 </label>
                 <div class="add_drug_remarks_space examine_quarantine">
@@ -67,5 +67,5 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="js/sub.js"></script>
+<script type="text/javascript" src="/wx/js/pc_doctor.js"></script>
 </html>
