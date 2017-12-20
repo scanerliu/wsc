@@ -9,9 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.zxsm.wsc.entity.common.DjBaseEntity;
 
-public class DjPrescriptionParam extends DjBaseEntity {
+public class DjPrescriptionParam {
 	
 	private Long id;
 	
@@ -28,9 +30,11 @@ public class DjPrescriptionParam extends DjBaseEntity {
 	private String outpatientNo;
 	
 	// 日期
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date starDate;
 	
 	// 日期
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	
 	// 姓名
@@ -52,68 +56,51 @@ public class DjPrescriptionParam extends DjBaseEntity {
 	private String diagnosis;
 	
 	// 医师Id
-	@Column
 	private Long docId;
 	
 	// 医师姓名
-	@Column(length = 20)
 	private String docName;
 	
 	// 医师签名
-	@Column(length = 200)
 	private String docImg;
 	
 	// 药师id
-	@Column
 	private Long phaId;
 	
 	// 药师名字
-	@Column(length = 20)
 	private String phaName;
 	
 	// 药师签名
-	@Column(length = 200)
 	private String phaImg;
 	
 	// 配药人员
-	@Column(length = 10)
 	private String pharmacist;
 	
 	// 核对发药
-	@Column(length = 10)
 	private String checker;
 	
 	// 门店
-	@Column(length = 40)
 	private String store;
 	
 	// 门店id
-	@Column
 	private Long storeId;
 	
 	// 药品列表
-    @OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,orphanRemoval=true)
-    @JoinColumn(name="drugId")
     private List<DjDrug> drugs;
     
     // 处方状态 0:未审核 1:已审核
-    @Column
     private Integer status;
     
     // 处方通过状态 0:未通过 2: 已通过
-    @Column
     private Integer passStatus;
     
     // 备注
-    @Column(length = 250)
     private String mark;
     
     // 审核单的照片
-    @Column(length = 100)
     private String imgUrl;
     
     // 处方单类型 0:处方单 1:处方单审核单
-    @Column
     private Integer type;
 
 	public Long getId() {

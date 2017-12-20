@@ -219,3 +219,14 @@ $(document).ready(function () {
         }
     })
 });
+
+function searchPrescriptions(f){
+	var url = "/wx/doctor/searchprescribes";
+	var loadData = null;
+	if(f){
+		loadData = $("#searchform").serializeArray();
+	}else{
+		loadData = $("#listform").serializeArray();
+	}
+	$("#results").load(url,loadData);
+}

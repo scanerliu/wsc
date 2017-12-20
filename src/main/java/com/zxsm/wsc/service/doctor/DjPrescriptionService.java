@@ -112,7 +112,7 @@ public class DjPrescriptionService {
 			
 			Date endDate = (Date) searchMap.get(DjPrescription.sEndDate);
 			if(endDate != null)
-				criteria.add(Restrictions.gte(DjPrescription.sPreDate, endDate, true));
+				criteria.add(Restrictions.lte(DjPrescription.sPreDate, endDate, true));
 
 			Integer status = (Integer) searchMap.get(DjPrescription.sStatus);
 			if(status != null)
