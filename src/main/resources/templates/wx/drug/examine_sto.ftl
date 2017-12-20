@@ -14,6 +14,16 @@
 </head>
 
 <body>
+<form>
+<input type="hidden" value="${doc.autograph!''}" name="phaImg">
+<input type="hidden" value="${doc.name!''}" name="phaName">
+<input type="hidden" value="${pre.id?c}" name="id">
+<input type="hidden" value="" name="passStatus">
+<input type="hidden" value="" name="mark">
+<input type="hidden" value="" name="">
+<input type="hidden" value="" name="">
+<input type="hidden" value="" name="">
+</form>
 <div class="drug">
     <div class="add_drug lssue">
         <div class="lssue_logo">
@@ -54,7 +64,16 @@
                 </label>
                 <div class="add_drug_remarks_space examine_quarantine">
                     <span class="prompt">*原因:</span>
-                    <textarea id="reason"></textarea>
+                    <form id="formId" method="POST" action="/wx/examine/update">
+                    <textarea id="reason" name="mark"></textarea>
+					<input type="hidden" value="${doc.autograph!''}" name="phaImg">
+					<input type="hidden" value="${doc.name!''}" name="phaName">
+					<input type="hidden" value="${pre.id?c}" name="id">
+					<input type="hidden" id="choseId" value="" name="passStatus">
+					<input type="hidden" value="" name="">
+					<input type="hidden" value="" name="">
+					<input type="hidden" value="" name="">
+					</form>
                 </div>
             </div>
         </div>
@@ -68,4 +87,28 @@
 </div>
 </body>
 <script type="text/javascript" src="/wx/js/pc_doctor.js"></script>
+<script type="text/javascript">
+// 审核单选
+$('.examine_click').on('click', function () {
+    console.log();
+    if ($('.examine_click').index($(this)) === 0) {
+    $("#choseId").val(0);
+    }
+    else
+    {
+     $("#choseId").val(1);
+    }
+    $.each($('.examine_click').find('img'), function (i, item) {
+        $(item).attr('src', '/wx/images/drug/not_chick.png')
+    });
+    $($(this).find('img')[0]).attr('src', '/wx/images/drug/chick.png');
+    $('#reason').attr('placeholder', '');
+    if ($('.examine_click').index($(this)) === 1) {
+        $('#reason').attr('placeholder', '请填写不通过原因')
+    }
+});
+$('#submits').on('click', function () {
+$("#formId").submit();
+});
+</script>
 </html>

@@ -47,6 +47,7 @@ public class DjExamineController extends DjBaseController
 		
 		DjPrescription pre = preSvs.findOne(did);
 		map.addAttribute("pre", pre);
+		map.addAttribute("doc", doctor);
 		if(pre == null)
 			return "";
 		
@@ -62,6 +63,7 @@ public class DjExamineController extends DjBaseController
 	@RequestMapping("update")
 	public String update(DjPrescriptionParam param,ModelMap map,HttpServletRequest req,HttpSession session)
 	{
+		preSvs.examineUpdate(param);
 		return "";
 	}
 	

@@ -192,7 +192,7 @@ public class DjPrescriptionService {
 		 * @param param
 		 * @return
 		 */
-		public Boolean examine(DjPrescriptionParam param)
+		public Boolean examineUpdate(DjPrescriptionParam param)
 		{
 			DjPrescription pre = preRepo.findOne(param.getId());
 			pre.setPhaImg(param.getPhaImg());
