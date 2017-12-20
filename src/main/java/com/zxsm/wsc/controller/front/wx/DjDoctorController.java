@@ -28,6 +28,7 @@ import com.zxsm.wsc.common.DjKeys;
 import com.zxsm.wsc.common.WebUtils;
 import com.zxsm.wsc.common.Controllers.DjBaseController;
 import com.zxsm.wsc.common.UtilsTools.CookiesUtil;
+import com.zxsm.wsc.common.UtilsTools.StringTools;
 import com.zxsm.wsc.common.tencent.controller.DjUserQRcodeTools;
 import com.zxsm.wsc.common.tencent.entity.JsTicket;
 import com.zxsm.wsc.entity.ad.DjAd;
@@ -35,6 +36,7 @@ import com.zxsm.wsc.entity.common.DjOUpdateParam;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDoctorParam;
 import com.zxsm.wsc.entity.doctor.DjDrug;
+import com.zxsm.wsc.entity.doctor.DjPrescription;
 import com.zxsm.wsc.entity.goods.DjGoods;
 import com.zxsm.wsc.entity.management.DjNaviItem;
 import com.zxsm.wsc.entity.order.DjOrder;
@@ -314,6 +316,14 @@ public class DjDoctorController extends DjBaseController
 		//获取所有门店信息
 		List<DeptVO> deptList = eCommonSvs.selectDeptAll();
 		map.addAttribute("deptList",deptList);
+		//药师
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put(DjDoctor.sUtype, 1);
+		searchMap.put(DjDoctor.sIsOnline, true);
+		List<DjDoctor> doctorList = doctorSvs.find(searchMap);
+		map.addAttribute("doctorList",doctorList);
+		String no = StringTools.getUniqueNoWithHeader("CF");
+		map.addAttribute("no",no);
 		return "/wx/doctor/doctor_prescribe";
 	}
 	/**
@@ -355,6 +365,35 @@ public class DjDoctorController extends DjBaseController
 		}
 		map.addAttribute("drugList",drugList2);
 		return "/wx/doctor/doctor_drugs";
+	}
+	
+	/**
+	 * 开处方
+	 * @param prescription
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/doprescribe")
+	@ResponseBody
+	public Map<String, Object> doprescribe(DjPrescription prescription, DjDoctorParam param, ModelMap map, HttpServletRequest req, HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			res.put("msg", "请登录！");
+			return res;
+		}
+		prescription.setDocId(doctor.getId());
+		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
+		res.put("error", 1);
+		return res;
 	}
 	//
 	//	//基本资料

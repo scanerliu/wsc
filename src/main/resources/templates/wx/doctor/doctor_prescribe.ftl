@@ -40,6 +40,7 @@ $(function (){
         <button class="close_chick_prompt">知道了</button>
     </div>
     <div class="add_drug">
+    	<form id="addprescriptionform">
         <div class="add_drug_l">
             <div class="add_drug_type">
                 <div id="add_drug_tp" class="add_drug_tp">普通</div>
@@ -49,92 +50,61 @@ $(function (){
                 <p>(处方伐)</p>
             </div>
             <div class="add_drug_info">
-                <span class="add_drug_info_no">NO:201712181254001</span>
+            	<input name="preNo" type="hidden" value="${no!''}">
+                <span class="add_drug_info_no">NO:${no!''}</span>
                 <div class="add_drug_from">
                     <label class="add_drug_in">
                         <span>科别:</span>
-                        <input id="drug_category" type="text">
+                        <input id="drug_category" type="text" name="cat">
                     </label>
                     <label class="add_drug_in">
                         <span>床号:</span>
-                        <input id="drug_bed" type="number">
+                        <input id="drug_bed" type="number" name="bedNo">
                     </label>
                     <label class="add_drug_in">
                         <span>门诊号:</span>
-                        <input id="drug_outpatient" type="number">
+                        <input id="drug_outpatient" type="number" name="outpatientNo">
                     </label>
                     <label class="add_drug_in">
                         <span>日期:</span>
-                        <input id="drug_times" class="date_input" type="text">
+                        <input id="drug_times" class="date_input" type="text" name="preDate">
                     </label>
                 </div>
                 <div class="add_drug_from">
                     <label class="add_drug_in">
                         <span>姓名:</span>
-                        <input id="drug_name" type="text">
+                        <input id="drug_name" type="text" name="patName">
                     </label>
                     <label class="add_drug_in">
                         <span>性别:</span>
-                        <input id="drug_sex" type="text">
+                        <input id="drug_sex" type="text" name="sex">
                     </label>
                     <label class="add_drug_in">
                         <span>年&emsp;龄:</span>
-                        <input id="drug_age" type="number">
+                        <input id="drug_age" type="number" name="age">
                     </label>
                     <label class="add_drug_in">
                         <span>体重:</span>
-                        <input id="drug_weight" type="number">
+                        <input id="drug_weight" type="number" name="weight">
                     </label>
                 </div>
                 <div class="add_drug_from">
                     <label class="add_drug_in">
                         <span>过敏史:</span>
-                        <input id="drug_anaphylaxis" class="add_drug_in1" type="text">
+                        <input id="drug_anaphylaxis" class="add_drug_in1" type="text" name="allergy">
                     </label>
                 </div>
                 <div class="add_drug_from">
                     <label class="add_drug_in">
                         <span>初步诊断:</span>
-                        <input id="drug_diagnosis" class="add_drug_in2" type="text">
+                        <input id="drug_diagnosis" class="add_drug_in2" type="text" name="diagnosis">
                     </label>
                 </div>
             </div>
             <div class="add_drug_list">
                 <span class="add_drug_info_no">Rp</span>
                 <ul>
-                    <!--<li data="%7B%22id%22%3A3%2C%22name%22%3A%22999%E6%84%9F%E5%86%92%E7%81%B5%E9%A2%97%E7%B2%92%22%7D">-->
-                        <!--<div class="add_drug_item">-->
-                            <!--<p class="add_drug_item_name">1、999感冒灵</p>-->
-                            <!--<p class="add_drug_item_explain">用量：开三盒</p>-->
-                            <!--<p class="add_drug_item_explain">用法：每日三次，每次三颗</p>-->
-                        <!--</div>-->
-                        <!--<div class="add_drug_operation">-->
-                            <!--<a href="javascript:;">修改</a>-->
-                            <!--<a href="javascript:;">删除</a>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li data="%7B%22id%22%3A3%2C%22name%22%3A%22999%E6%84%9F%E5%86%92%E7%81%B5%E9%A2%97%E7%B2%92%22%7D">-->
-                        <!--<div class="add_drug_item">-->
-                            <!--<p class="add_drug_item_name">1、999感冒灵</p>-->
-                            <!--<p class="add_drug_item_explain">用量：开三盒</p>-->
-                            <!--<p class="add_drug_item_explain">用法：每日三次，每次三颗</p>-->
-                        <!--</div>-->
-                        <!--<div class="add_drug_operation">-->
-                            <!--<a href="javascript:;">修改</a>-->
-                            <!--<a href="javascript:;">删除</a>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li data="%7B%22id%22%3A3%2C%22name%22%3A%22999%E6%84%9F%E5%86%92%E7%81%B5%E9%A2%97%E7%B2%92%22%7D">-->
-                        <!--<div class="add_drug_item">-->
-                            <!--<p class="add_drug_item_name">1、999感冒灵</p>-->
-                            <!--<p class="add_drug_item_explain">用量：开三盒</p>-->
-                            <!--<p class="add_drug_item_explain">用法：每日三次，每次三颗</p>-->
-                        <!--</div>-->
-                        <!--<div class="add_drug_operation">-->
-                            <!--<a href="javascript:;">修改</a>-->
-                            <!--<a href="javascript:;">删除</a>-->
-                        <!--</div>-->
-                    <!--</li>-->
+                    
                 </ul>
             </div>
             <div class="add_drug_staff">
@@ -167,7 +137,7 @@ $(function (){
             </div>
             <div class="add_drug_choice">
                 <p><span class="prompt">*</span>选择门店:</p>
-                <select id="select_name">
+                <select id="select_name" name="store">
                 	<option value="">--请选择门店--</option>
                 	<#if deptList??>
                 	<#list deptList as dept>
@@ -178,13 +148,11 @@ $(function (){
             </div>
             <div id="search" style="display: none">
                 <div class="add_drug_search">
-                	<form id="searchform">
                     <input id="search_val" name="keyword" type="text">
                     <div id="search_sub" class="add_drug_search_btn">
                         <img src="/wx/images/search.png" alt="">
                     </div>
                     <input id="selectdept" name="dept" type="hidden" value="">
-                    </form>
                 </div>
                 <div class="add_drug_entry" id="druglist">
                     
@@ -199,7 +167,7 @@ $(function (){
                         <textarea id="usage"></textarea>
                     </div>
                     <div class="add_drug_remarks_oper">
-                        <button id="add">加入处方</button>
+                        <button id="add" type="button">加入处方</button>
                     </div>
                 </div>
 
@@ -213,7 +181,7 @@ $(function (){
                         <textarea id="usages"></textarea>
                     </div>
                     <div class="add_drug_remarks_oper">
-                        <button id="edit">确定修改</button>
+                        <button id="edit" type="button">确定修改</button>
                     </div>
                 </div>
             </div>
@@ -222,20 +190,21 @@ $(function (){
     <div class="add_drug_bottom">
         <div class="add_drug_user">
             <p><span class="prompt">*</span>审核药师:</p>
-            <select id="select_user">
+            <select id="select_user" name="phaId">
                 <option value="">--请选择药师--</option>
-                <option value="y1">药师1</option>
-                <option value="y2">药师2</option>
-                <option value="y3">药师3</option>
-                <option value="y4">药师4</option>
-                <option value="y5">药师5</option>
+                <#if doctorList??>
+                <#list doctorList as doctor>
+                <option value="${doctor.id!''}">${doctor.name!''}</option>
+                </#list>
+                </#if>
             </select>
         </div>
         <div class="add_drug_submit">
-            <button id="submits">提交</button>
+            <button id="submits" type="button">提交</button>
             <button id="cancel" class="add_drug_submit1">取消</button>
         </div>
     </div>
+    </form>
 </div>
 <script type="text/javascript" src="/wx/js/pc_doctor.js"></script>
 </body>
