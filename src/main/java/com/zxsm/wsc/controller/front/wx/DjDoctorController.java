@@ -3,6 +3,7 @@ package com.zxsm.wsc.controller.front.wx;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -329,6 +330,7 @@ public class DjDoctorController extends DjBaseController
 		map.addAttribute("doctorList",doctorList);
 		String no = StringTools.getUniqueNoWithHeader("CF");
 		map.addAttribute("no",no);
+		map.addAttribute("pdate", new Date());
 		return "/wx/doctor/doctor_prescribe";
 	}
 	/**
@@ -395,7 +397,12 @@ public class DjDoctorController extends DjBaseController
 			res.put("msg", "请登录！");
 			return res;
 		}
+		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
 		prescription.setDocId(doctor.getId());
+		prescription.setDocImg(djDoctor.getAutograph());
+		prescription.setDocName(djDoctor.getName());
+		prescription.setPreDate(new Date());
+		
 		prescriptionService.saveFull(prescription);
 		res.put("error", 1);
 		return res;
@@ -479,7 +486,7 @@ public class DjDoctorController extends DjBaseController
 		if(null!=prescript && doctor.getId().equals(prescript.getDocId())){
 			map.addAttribute("prescript",prescript);
 		}
-		return "/wx/doctor/doctor_prescribedetail";
+		return "/wx/doctor/doctor_prescribeitem";
 	}
 	//
 	//	//基本资料

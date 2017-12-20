@@ -60,7 +60,7 @@
                     </label>
                     <label class="add_drug_in">
                         <span>日期:</span>
-                        <input id="drug_times" class="date_input" type="text" name="preDate">
+                        <input id="drug_times" type="text" name="preDate" value="${pdate?string('yyyy-MM-dd')}" readonly="readonly">
                     </label>
                 </div>
                 <div class="add_drug_from">

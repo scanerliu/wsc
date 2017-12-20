@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: #333;
   font-size: 14px;
   font-family: '微软雅黑';
 }
@@ -43,6 +44,20 @@ img {
   top: calc(50% - 71px);
   left: calc(50% - 121px);
   width: 200px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  box-shadow: 0 0 5px #ddd;
+}
+
+.c2h_prompt {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 10px;
+  left: calc(50% - 400px);
+  width: 800px;
   padding: 20px;
   text-align: center;
   border: 1px solid #e0e0e0;
@@ -142,7 +157,16 @@ img {
 }
 
 .staff_space1 {
-  margin-right: 245px!important;
+  position: relative;
+  margin-right: 245px !important;
+}
+
+.staff_space1 img {
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  width: 50px;
+  height: 26px;
 }
 
 .add_drug_in span {
@@ -150,6 +174,7 @@ img {
 }
 
 .add_drug_in input {
+  font-size: 16px;
   margin-left: 5px;
   border-width: 0 0 1px 0;
   border-color: #333;
@@ -158,15 +183,11 @@ img {
 }
 
 .add_drug_in1 {
-  width: calc(100% - 92px)!important;
+  width: calc(100% - 92px) !important;
 }
 
 .add_drug_in2 {
-  width: calc(100% - 108px)!important;
-}
-
-.add_drug_in3 {
-  background-color: #f3e5f6;
+  width: calc(100% - 108px) !important;
 }
 
 .add_drug_list {
@@ -177,7 +198,7 @@ img {
 .add_drug_list:after {
   content: "";
   display: block;
-  clear:both;
+  clear: both;
 }
 
 .add_drug_list ul {
@@ -194,7 +215,22 @@ img {
 .add_drug_list li:after {
   content: "";
   display: block;
-  clear:both;
+  clear: both;
+}
+
+.no_drug {
+  text-align: center;
+  padding: 100px;
+}
+
+.no_drug img {
+  vertical-align: middle;
+}
+
+.no_drug span {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .add_drug_item {
@@ -226,10 +262,21 @@ img {
   margin: 0 10px;
 }
 
+.bg_important {
+  background-color: #f3e5f6;
+}
+
+.bg_commonly {
+  background-color: #fafafa;
+}
+
+.bg_unimportance {
+  background-color: #fff;
+}
+
 .add_drug_staff {
   padding: 0 20px;
   height: 112px;
-  background-color: #f3e5f6;
 }
 
 .staff_space {
@@ -238,13 +285,12 @@ img {
 
 .add_drug_r {
   width: 410px;
-  height: 100%;
+  min-height: 827px;
   float: left;
 }
 
 .add_drug_head {
   height: 68px;
-  background-color: #f3e5f6;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -283,7 +329,7 @@ img {
 .add_drug_search:after {
   content: "";
   display: block;
-  clear:both;
+  clear: both;
 }
 
 .add_drug_search input {
@@ -318,10 +364,11 @@ img {
 .add_drug_entry {
   padding-left: 20px;
 }
+
 .add_drug_entry:after {
   content: "";
   display: block;
-  clear:both;
+  clear: both;
 }
 
 .add_drug_entry ul {
@@ -344,7 +391,7 @@ img {
 .add_drug_entry li:after {
   content: "";
   display: block;
-  clear:both;
+  clear: both;
 }
 
 .add_drug_entry li img {
@@ -381,7 +428,7 @@ img {
   text-align: center;
 }
 
-.add_drug_remarks_oper button, .add_drug_submit button {
+.add_drug_remarks_oper button, .add_drug_submit button, .add_drug_submit2 button {
   cursor: pointer;
   width: 140px;
   height: 34px;
@@ -441,11 +488,16 @@ img {
   float: left;
 }
 
+.add_drug_submit2 {
+  text-align: center;
+}
+
 .add_drug_submit1 {
   margin-left: 50px;
-  color: #333!important;
-  background-color: #f5f5f5!important;
+  color: #333 !important;
+  background-color: #f5f5f5 !important;
 }
+
 /*开方列表*/
 .lssue {
   min-height: 826px;

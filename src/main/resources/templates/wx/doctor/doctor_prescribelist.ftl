@@ -54,7 +54,7 @@
                 <img src="/wx/images/drug/search1.png" alt="">
             </div>
             <a href="/wx/doctor/prescribe">
-                <button class="lssue_condition_add">新增处方</button>
+                <button class="lssue_condition_add" type="button">新增处方</button>
             </a>
             </form>
         </div>
