@@ -81,7 +81,7 @@ public class DjDoctorService {
 	public Page<DjDoctor> find(Map<String,Object> searchMap,int page,int size)
 	{
 		Criteria<DjDoctor> criteria = initCriteria(searchMap);
-		PageRequest pageRequest = new PageRequest(page, size, new Sort(Direction.DESC, "sort"));
+		PageRequest pageRequest = new PageRequest(page, size, new Sort(Direction.DESC, "sort").and(new Sort(Direction.DESC,"isOnline")));
 		return doctorRepo.findAll(criteria, pageRequest);
 	}
 	
@@ -103,6 +103,10 @@ public class DjDoctorService {
 		Integer type = (Integer) searchMap.get(DjDoctor.sType);
 		if(type != null)
 			criteria.add(Restrictions.eq(DjDoctor.sType, type, true));
+		
+		Integer utype = (Integer) searchMap.get(DjDoctor.sUtype);
+		if(type != null)
+			criteria.add(Restrictions.eq(DjDoctor.sUtype, utype, true));
 		
 		Boolean expressStatus = (Boolean) searchMap.get(DjDoctor.sIsOnline);
 		if(expressStatus != null)
