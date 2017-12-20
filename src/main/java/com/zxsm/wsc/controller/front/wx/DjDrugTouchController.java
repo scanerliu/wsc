@@ -23,12 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.zxsm.wsc.common.Controllers.DjBaseController;
 import com.zxsm.wsc.common.UtilsTools.DjTools;
-import com.zxsm.wsc.common.tencent.entity.JsTicket;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDoctorParam;
+import com.zxsm.wsc.entity.doctor.DjPrescriptionParam;
 import com.zxsm.wsc.entity.management.DjNaviItem;
 import com.zxsm.wsc.entity.user.DjUser;
 import com.zxsm.wsc.service.doctor.DjDoctorService;
+import com.zxsm.wsc.service.doctor.DjPrescriptionService;
 import com.zxsm.wsc.service.management.DjNaviItemService;
 
 
@@ -44,6 +45,9 @@ public class DjDrugTouchController extends DjBaseController
 	
 	@Value("${imagePath}")
 	private String rootPath;
+	
+	@Autowired
+	private DjPrescriptionService preSvs;
 	
 	//目录
 	@RequestMapping("/cate")
@@ -102,10 +106,16 @@ public class DjDrugTouchController extends DjBaseController
 	// 处理上传页面
 	@RequestMapping(value="/upload", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> upload(DjDoctorParam param,ModelMap map,
+	public Map<String, Object> upload(DjPrescriptionParam param,ModelMap map,
 			MultipartFile imgFile)
 	{
 		Map<String, Object> res = new HashMap<String, Object>();
+		if(!isLogin())
+		{
+			res.put("error", 1);
+			res.put("message", "未登录");
+			return res;
+		}
 		if (null == imgFile || imgFile.isEmpty())
 		{
 			res.put("error", 1);
@@ -142,11 +152,14 @@ public class DjDrugTouchController extends DjBaseController
 			res.put("error", 0);
 			res.put("url", "/images/sf/" + fileName);
 
+			DjUser user = getUserInfo();
+			preSvs.initPres(user.getRealName(), user.getId(), "/images/sf/" + fileName, param.getPhaName(), param.getPhaId());
 		}
 		catch (Exception e)
 		{
 			res.put("error", 1);
 		}
+		
 		return res;
 	}
 	

@@ -5,80 +5,47 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.zxsm.wsc.entity.common.DjBaseEntity;
 
-/**
- * 处方单
- * @author maeing
- *
- */
-@Entity
-public class DjPrescription extends DjBaseEntity {
+public class DjPrescriptionParam extends DjBaseEntity {
 	
-	public static final String sPreNo = "preNo";
-	public static final String sPreDate = "preDate";
-	public static final String sPatName = "patName";
-	public static final String sStatus = "status";
-	public static final String sPassStatus = "passStatus";
-	public static final String sType = "type";
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	// 处方单号
-	@Column(length = 100)
 	private String preNo;
 	
 	// 科别
-	@Column(length = 50)
 	private String cat;
 	
 	// 床号
-	@Column(length = 100)
 	private String bedNo;
 	
 	// 门诊号
-	@Column(length = 100)
 	private String outpatientNo;
 	
 	// 日期
-	@Column
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date preDate;
 	
 	// 姓名
-	@Column(length = 20)
 	private String patName;
 	
 	// 性别
-	@Column(length = 6)
 	private String sex;
 	
 	// 年龄
-	@Column(length = 6)
 	private String age;
 	
 	// 体重
-	@Column(length = 10)
 	private String weight;
 	
 	// 过敏源
-	@Column(length = 50)
 	private String allergy;
 	
 	// 初步诊断
-	@Column(length = 200)
 	private String diagnosis;
 	
 	// 医师Id
@@ -369,5 +336,5 @@ public class DjPrescription extends DjBaseEntity {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-    
+
 }

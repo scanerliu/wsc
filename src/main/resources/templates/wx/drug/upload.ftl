@@ -24,7 +24,9 @@
         <div class="camera">
             <img id="pai" src="/wx/images/drugtouch/camera.png" alt="">
             <form method="post" id="imgId" action="/wx/drug/upload" enctype="multipart/form-data">
-            <input id="camera" name="imgFile" type="file" accept="image/*" capture="camera" style="display: none">
+            <input id="camera" name="imgFile" type="file" accept="image/*"<#-- capture="camera" -->style="display: none">
+            <input type="hidden" name="phaId" value="${doctor.id?c}">
+            <input type="hidden" name="phaName" value="${doctor.name!''}">
             </form>
         </div>
         <div class="query_info">
@@ -97,11 +99,17 @@
     $('#upload').on('click', function () {
         var img = $('#show_img').attr('src');
         if (img) {
-            console.log(img);
-           // $.post("/wx/drug/upload",{imgFile:img},function(result){
-           // 	
-           // });
-            $("#imgId").submit();
+            //console.log(img);
+            var formData =new FormData(document.forms[0]);
+            var req = new XMLHttpRequest();
+			req.open("POST", "/wx/drug/upload");//使用POST发送请求
+			req.onload = function(event){
+				if(this.status === 200){
+					console.log(this.response);//请求成功后打印返回的结果
+				}
+			}
+			req.send(formData);
+			req = null;
         }else{
             alert('未找到图片')
         }
