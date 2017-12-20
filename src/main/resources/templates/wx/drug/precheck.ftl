@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>审核记录</title>
+    <title>审核状态</title>
     <link rel="stylesheet" href="/wx/css/drugtouch/style.css" />
 	<link rel="stylesheet" href="/wx/css/drugtouch/wait_examine.css" />
 	<script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
@@ -12,27 +12,29 @@
 <body>
 <header>
     <a href="javascript:history.go(-1);" class="back"></a>
-    <h3>审核记录</h3>
+    <h3>审核状态</h3>
+    <#--<a href="" class="record">审方记录</a>-->
 </header>
-<div class="examine_record">
-    <ul>
-    	<#if preList??>
-    	<#list preList as item>
-    	<a href="/wx/drug/precheck/${item.id?c}">
-        <li>
-            <div class="examine_record_info">
-                <p class="examine_record_code">审核编号：<span>${item.preNo!''}</span></p>
-                <p class="examine_record_state <#if item.status==0>wait_color<#else><#if item.passStatus==0>wait_color<#else>success_color</#if></#if>"><#if item.status==0>待审核<#else><#if item.passStatus==0>未通过<#else>已通过</#if></#if></p>
-            </div>
-            <div class="examine_record_content">
-                <p class="examine_record_name">审核药师：<span>${item.phaName!''}</span></p>
-                <p class="examine_record_time">提交时间：<span>${item.preDate}</span></p>
-            </div>
-        </li>
-        </a>
-        </#list>
-        </#if>
-    </ul>
+<div class="wait_examine">
+    <div class="wait_examine_icon">
+        <img src="/wx/images/drugtouch/wait.png" alt="">
+        <span class="<#if pre.status==0>wait_color<#else><#if pre.passStatus==0>wait_color<#else>success_color</#if></#if>"><#if pre.status==0>待审核<#else><#if pre.passStatus==0>未通过<#else>已通过</#if></#if></span>
+    </div>
+    <div class="wait_examine_info">
+        <p class="wait_examine_txt"><span class="wait_examine_name">${pre.phaName!''}</span>
+        <#if pre.status==0>
+        执业药师正在为您审核处方单，请稍后再 来查询结果！
+        <#else><#if pre.passStatus==0>
+        业药师审核了您的处方单，但是没有通过。
+        <#else>
+        业药师审核了您的处方单，并且通过了审核。
+        </#if></#if>
+        </p>
+        <p class="wait_examine_time">提交时间：${pre.preDate}</p>
+    </div>
+    <div class="wait_examine_img">
+        <img src="${pre.imgUrl!''}" alt="">
+    </div>
 </div>
 </body>
 <script>
