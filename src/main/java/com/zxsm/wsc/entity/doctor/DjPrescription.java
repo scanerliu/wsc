@@ -26,6 +26,8 @@ import com.zxsm.wsc.entity.common.DjBaseEntity;
 public class DjPrescription extends DjBaseEntity {
 	
 	public static final String sPreNo = "preNo";
+	public static final String sStartDate = "startDate";
+	public static final String sEndDate = "endDate";
 	public static final String sPreDate = "preDate";
 	public static final String sPatName = "patName";
 	public static final String sStatus = "status";

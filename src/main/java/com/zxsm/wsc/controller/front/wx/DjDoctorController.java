@@ -37,6 +37,7 @@ import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDoctorParam;
 import com.zxsm.wsc.entity.doctor.DjDrug;
 import com.zxsm.wsc.entity.doctor.DjPrescription;
+import com.zxsm.wsc.entity.doctor.DjPrescriptionParam;
 import com.zxsm.wsc.entity.goods.DjGoods;
 import com.zxsm.wsc.entity.management.DjNaviItem;
 import com.zxsm.wsc.entity.order.DjOrder;
@@ -398,6 +399,60 @@ public class DjDoctorController extends DjBaseController
 		prescriptionService.saveFull(prescription);
 		res.put("error", 1);
 		return res;
+	}
+	
+	/**
+	 * 处方列表页
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/prescribelist")
+	public String prescribelist(DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
+		map.addAttribute("doctor",djDoctor);
+		return "/wx/doctor/doctor_prescribelist";
+	}
+	/**
+	 * 处方数据查询页
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/searchprescribes")
+	public String searchprescribes(DjPrescriptionParam sc, DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put(DjPrescription.sStatus, sc.getStatus());
+		searchMap.put(DjPrescription.sPassStatus, sc.getPassStatus());
+		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
+		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
+		List<DjPrescription> prescList = prescriptionService.find(searchMap);
+		map.addAttribute("prescList",prescList);
+		return "/wx/doctor/doctor_prescribelistbody";
 	}
 	//
 	//	//基本资料
