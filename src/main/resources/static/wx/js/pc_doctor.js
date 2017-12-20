@@ -206,18 +206,6 @@ $(document).ready(function () {
 $(document).ready(function () {
     // 时间
     $($.date_input.initialize);
-    // 审核单选
-    $('.examine_click').on('click', function () {
-        console.log();
-        $.each($('.examine_click').find('img'), function (i, item) {
-            $(item).attr('src', '/wx/images/drug/not_chick.png')
-        });
-        $($(this).find('img')[0]).attr('src', '/wx/images/drug/chick.png');
-        $('#reason').attr('placeholder', '');
-        if ($('.examine_click').index($(this)) === 1) {
-            $('#reason').attr('placeholder', '请填写不通过原因')
-        }
-    })
 });
 
 function searchPrescriptions(f){

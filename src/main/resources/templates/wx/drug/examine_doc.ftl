@@ -17,7 +17,7 @@
 <div class="drug">
     <div class="add_drug lssue">
         <div class="lssue_logo">
-            <img src="./img/logo.png" alt="">
+            <img src="/wx/images/drug/logo.png" alt="">
             <h4>真善美执业医师</h4>
         </div>
         <div class="examine">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="add_drug_title">
                         <h4>重庆京西医院</h4>
-                        <p>(处方伐)</p>
+                        <p>(处方笺)</p>
                     </div>
                     <div class="add_drug_info">
                         <span class="add_drug_info_no">NO:201712181254001</span>
@@ -118,7 +118,7 @@
                             <label class="add_drug_in staff_space1">
                                 <span>医师:</span>
                                 <input id="drug_physician" class="bg_important" type="text">
-                                <img src="./img/name.png" alt="">
+                                <img src="/wx/images/drug/name.png" alt="">
                             </label>
                             <label class="add_drug_in staff_space1">
                                 <span>药&emsp;&emsp;师:</span>
@@ -141,11 +141,11 @@
             <div class="examine_r">
                 <p class="examine_title">审核结果:</p>
                 <label class="examine_click">
-                    <img src="./img/not_chick.png" alt="">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
                     <span>通过</span>
                 </label>
                 <label class="examine_click">
-                    <img src="./img/not_chick.png" alt="">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
                     <span>不通过</span>
                 </label>
                 <div class="add_drug_remarks_space examine_quarantine">

@@ -20,6 +20,7 @@ import com.zxsm.wsc.common.UtilsTools.StringTools;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDrug;
 import com.zxsm.wsc.entity.doctor.DjPrescription;
+import com.zxsm.wsc.entity.doctor.DjPrescriptionParam;
 import com.zxsm.wsc.repository.doctor.DjDrugRepo;
 import com.zxsm.wsc.repository.doctor.DjPrescriptionRepo;
 
@@ -183,5 +184,22 @@ public class DjPrescriptionService {
 			Criteria<DjPrescription> criteria = initCriteria(searchMap);
 			
 			return preRepo.findAll(criteria);
+		}
+		
+		
+		/**
+		 * 审核时更新
+		 * @param param
+		 * @return
+		 */
+		public Boolean examineUpdate(DjPrescriptionParam param)
+		{
+			DjPrescription pre = preRepo.findOne(param.getId());
+			pre.setPhaImg(param.getPhaImg());
+			pre.setPhaName(param.getPhaName());
+			pre.setPassStatus(param.getPassStatus());
+			pre.setMark(param.getMark());
+			preRepo.save(pre);
+			return true;
 		}
 }
