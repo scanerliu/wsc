@@ -46,6 +46,7 @@ import com.zxsm.wsc.entity.user.DjUParam;
 import com.zxsm.wsc.entity.user.DjUser;
 import com.zxsm.wsc.search.DrugCriteria;
 import com.zxsm.wsc.service.doctor.DjDoctorService;
+import com.zxsm.wsc.service.doctor.DjPrescriptionService;
 import com.zxsm.wsc.service.employe.ECommonService;
 import com.zxsm.wsc.service.goods.DjAdService;
 import com.zxsm.wsc.service.management.DjNaviItemService;
@@ -114,6 +115,9 @@ public class DjDoctorController extends DjBaseController
 	
 	@Autowired
 	private ECommonService eCommonSvs;
+	
+	@Autowired
+	private DjPrescriptionService prescriptionService;
 
 	// 医生分类
 	@RequestMapping("/cate")
@@ -391,7 +395,7 @@ public class DjDoctorController extends DjBaseController
 			return res;
 		}
 		prescription.setDocId(doctor.getId());
-		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
+		prescriptionService.saveFull(prescription);
 		res.put("error", 1);
 		return res;
 	}

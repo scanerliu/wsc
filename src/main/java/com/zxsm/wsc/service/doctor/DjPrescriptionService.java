@@ -18,7 +18,9 @@ import com.zxsm.wsc.common.SerchTools.Criterion;
 import com.zxsm.wsc.common.SerchTools.Restrictions;
 import com.zxsm.wsc.common.UtilsTools.StringTools;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
+import com.zxsm.wsc.entity.doctor.DjDrug;
 import com.zxsm.wsc.entity.doctor.DjPrescription;
+import com.zxsm.wsc.repository.doctor.DjDrugRepo;
 import com.zxsm.wsc.repository.doctor.DjPrescriptionRepo;
 
 @Service
@@ -27,6 +29,10 @@ public class DjPrescriptionService {
 
 	@Autowired
 	private DjPrescriptionRepo preRepo;
+	
+	@Autowired
+	private DjDrugRepo drugRepo;
+	
 	//查找
 		public DjPrescription findOne(Long id)
 		{
@@ -52,6 +58,22 @@ public class DjPrescriptionService {
 				return null;
 			
 			return preRepo.save(e);
+		}
+		/**
+		 * 保存处方全部信息
+		 * @param e
+		 * @return
+		 */
+		public DjPrescription saveFull(DjPrescription e)
+		{
+			if( null == e){
+				return null;
+			}
+			preRepo.save(e);
+			if(null!=e.getDrugs() && e.getDrugs().size() >0){
+			    drugRepo.save(e.getDrugs());
+			}			
+			return null;
 		}
 
 		public List<DjPrescription> save(List<DjPrescription> entities)
@@ -140,4 +162,6 @@ public class DjPrescriptionService {
 			pre.setPhaId(phaId);
 			return this.save(pre);
 		}
+		
+		
 }

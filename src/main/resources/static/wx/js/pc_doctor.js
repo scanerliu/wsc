@@ -185,10 +185,12 @@ $(document).ready(function () {
                 var url = "/wx/doctor/doprescribe";
                 var postData = $("#addprescriptionform").serializeArray();
                 $.post(url,postData,function(data){
-                	if(data.error==1){
-                		alert("提交成功！")
+                	var result = eval("("+data+")");
+                	if(result.error==1){
+                		alert("处方提交成功！");
+                		window.location.href=="/wx/doctor/home";
                 	}else{
-                		alert("提交失败！")
+                		alert("处方提交失败:请稍后重新操作！")
                 	}
                 	
                 },'text');
