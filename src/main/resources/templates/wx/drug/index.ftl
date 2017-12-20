@@ -17,7 +17,7 @@
 			<div class="title">
 				<img src="/wx/images/drugtouch/icon1.png"/>
 				<span>药师审方</span>
-				<a href="">审方记录</a>
+				<a href="/wx/drug/precheck">审方记录</a>
 			</div>
 			<div class="apothecarylist">
 				<ul>

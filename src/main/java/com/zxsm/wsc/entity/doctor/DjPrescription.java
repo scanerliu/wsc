@@ -31,6 +31,7 @@ public class DjPrescription extends DjBaseEntity {
 	public static final String sStatus = "status";
 	public static final String sPassStatus = "passStatus";
 	public static final String sType = "type";
+	public static final String sStore = "store";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,7 +55,7 @@ public class DjPrescription extends DjBaseEntity {
 	
 	// 日期
 	@Column
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date preDate;
 	
 	// 姓名
