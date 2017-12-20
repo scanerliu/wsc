@@ -208,12 +208,15 @@ public class DjDoctorController extends DjBaseController
 					CookiesUtil.setCookie(res, "pc_username", param.getUsername(), 24*60*60*100);
 					CookiesUtil.setCookie(res, "pc_password", param.getPassword(), 24*60*60*100);
 				}
+				if(doctor.getuType() == 0)
 				return "redirect:/wx/doctor/home";
+				else
+					return "redirect:/wx/examine";
 			}
 			map.addAttribute("username", param.username);
 			map.addAttribute("error", "1");
 		}
-
+		
 		return "/wx/doctor/doctor_login";
 	}
 

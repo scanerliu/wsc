@@ -1,5 +1,9 @@
 package com.zxsm.wsc.controller.front.wx;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,10 +33,85 @@ public class DjExamineController extends DjBaseController
 	@Autowired
 	private DjDoctorService doctorSvs;
 	
+	/**
+	 * 处方列表页
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping()
-	public String exList()
+	public String prescribelist(DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
 	{
-		return "";
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
+		map.addAttribute("doctor",djDoctor);
+		return "/wx/drug/doctor_prescribelist";
+	}
+	/**
+	 * 处方数据查询页
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/searchprescribes")
+	public String searchprescribes(DjPrescriptionParam sc, ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put(DjPrescription.sStatus, sc.getStatus());
+		searchMap.put(DjPrescription.sPassStatus, sc.getPassStatus());
+		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
+		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
+		List<DjPrescription> prescList = preSvs.find(searchMap);
+		map.addAttribute("prescList",prescList);
+		return "/wx/drug/doctor_prescribelistbody";
+	}
+	
+	/**
+	 * 处方详情页
+	 * @param id
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/prescribeitem{id}")
+	public String prescribeitem(@PathVariable("id") Long id, ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		DjPrescription prescript = preSvs.findOne(id);
+		if(null!=prescript && doctor.getId().equals(prescript.getDocId())){
+			map.addAttribute("prescript",prescript);
+		}
+		return "/wx/drug/doctor_prescribeitem";
 	}
 
 	@RequestMapping("/{did}")
@@ -47,6 +126,8 @@ public class DjExamineController extends DjBaseController
 		
 		DjPrescription pre = preSvs.findOne(did);
 		map.addAttribute("pre", pre);
+		map.addAttribute("prescript", pre);
+		
 		map.addAttribute("doc", doctor);
 		if(pre == null)
 			return "";
@@ -55,7 +136,7 @@ public class DjExamineController extends DjBaseController
 			return "";
 		
 		if(pre.getType() == 0)
-			return "/wx/drug/examine_doc";
+			return "/wx/drug/doctor_prescribeitem";
 		else
 			return "/wx/drug/examine_sto";
 	}
@@ -64,7 +145,7 @@ public class DjExamineController extends DjBaseController
 	public String update(DjPrescriptionParam param,ModelMap map,HttpServletRequest req,HttpSession session)
 	{
 		preSvs.examineUpdate(param);
-		return "";
+		return "redirect:/wx/examine";
 	}
 	
 	public DjDoctor isLogin(HttpSession session,HttpServletRequest req)

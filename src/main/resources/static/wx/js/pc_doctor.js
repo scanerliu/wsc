@@ -218,3 +218,13 @@ function searchPrescriptions(f){
 	}
 	$("#results").load(url,loadData);
 }
+function searchPrescriptions_pha(f){
+	var url = "/wx/examine/searchprescribes";
+	var loadData = null;
+	if(f){
+		loadData = $("#searchform").serializeArray();
+	}else{
+		loadData = $("#listform").serializeArray();
+	}
+	$("#results").load(url,loadData);
+}
