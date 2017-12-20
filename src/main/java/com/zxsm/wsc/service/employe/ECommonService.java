@@ -4,12 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zxsm.wsc.common.tencent.common.TdWXPay;
+import com.zxsm.wsc.entity.doctor.DjDrug;
 import com.zxsm.wsc.entity.user.DjUser;
+import com.zxsm.wsc.search.DrugCriteria;
+import com.zxsm.wsc.vo.DeptVO;
 
 @Service
 @Transactional
@@ -73,5 +80,100 @@ public class ECommonService {
 			return false;
 		}
 		return true;
+	}
+	/**
+	 * 查询药品信息
+	 * @param user
+	 * @return
+	 */
+	public List<DjDrug> selectDrugByDrug(DrugCriteria dc)
+	{
+		List<DjDrug> list = new ArrayList<DjDrug>();
+		String sql = "select top 20 货号,sum(库存数量) as stock,品名,规格,abc类别,销售价 from v门店批次库存库 where 部门='" + dc.getDept() + "' and 品名 like '%" + dc.getKeyword() + "%' group by 货号,品名,规格,abc类别,销售价  order by abc类别";
+		System.out.println(sql);
+		Connection sqlServer = connectSqlServer();
+		ResultSet rs=null;    //声明数据库结果集      
+		PreparedStatement pstmt=null; //声明数据库操作  
+		try {
+			pstmt = sqlServer.prepareStatement(sql);
+			rs=pstmt.executeQuery();  //执行查询操作  
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnCount = metaData.getColumnCount();
+			int columnCount_tem = 1;
+			while(columnCount_tem <= columnCount)
+			{
+				System.out.print(metaData.getColumnName(columnCount_tem++) + "		");
+			}
+			System.out.println("\n");
+			while(rs.next()){
+				/*int row = rs.getRow();
+				StringBuffer LogStr = new StringBuffer();
+				columnCount_tem = 1;
+				while(columnCount_tem <= columnCount)
+				{
+					String Result_str = rs.getString(columnCount_tem++);
+					LogStr.append(Result_str+"		");
+				}
+				System.out.println(LogStr);  */
+				DjDrug drug = new DjDrug();
+				drug.setDrugNo(rs.getString(1));
+				drug.setStock(rs.getString(2));
+				drug.setDrug(rs.getString(3));
+				drug.setSpecification(rs.getString(4));
+				drug.setAbc(rs.getString(5));
+				drug.setPrice(rs.getString(6));
+				list.add(drug);
+			}  
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+
+
+	public List<DeptVO> selectDeptAll() {
+		List<DeptVO> list = new ArrayList<DeptVO>();
+		String sql = "select 简称 from 客户清单2 where 1=1";
+		System.out.println(sql);
+		Connection sqlServer = connectSqlServer();
+		ResultSet rs=null;    //声明数据库结果集      
+		PreparedStatement pstmt=null; //声明数据库操作  
+		try {
+			pstmt = sqlServer.prepareStatement(sql);
+			rs=pstmt.executeQuery();  //执行查询操作  
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnCount = metaData.getColumnCount();
+			int columnCount_tem = 1;
+			while(columnCount_tem <= columnCount)
+			{
+				System.out.print(metaData.getColumnName(columnCount_tem++) + "		");
+			}
+			System.out.println("\n");
+			while(rs.next()){
+				/*int row = rs.getRow();
+				StringBuffer LogStr = new StringBuffer();
+				columnCount_tem = 1;
+				while(columnCount_tem <= columnCount)
+				{
+					String Result_str = rs.getString(columnCount_tem++);
+					DeptVO dept = new DeptVO();
+					dept.setKeyname(Result_str);
+					list.add(dept);
+					LogStr.append(Result_str+"		");
+				}
+				System.out.println(LogStr);*/  
+				String Result_str = rs.getString(1);
+				DeptVO dept = new DeptVO();
+				dept.setKeyname(Result_str);
+				list.add(dept);
+			}  
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return list;
+		}
+		return list;
 	}
 }

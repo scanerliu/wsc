@@ -36,6 +36,44 @@ img {
   left: 0;
 }
 
+.chick_prompt, .pharmacist_prompt, .verification_prompt {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: calc(50% - 71px);
+  left: calc(50% - 121px);
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  box-shadow: 0 0 5px #ddd;
+}
+
+.chick_prompt_mask {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.close_chick_prompt {
+  cursor: pointer;
+  width: 140px;
+  height: 34px;
+  font-size: 16px;
+  text-align: center;
+  border: 0;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #5a4496;
+  outline: none;
+}
+
 .add_drug {
   width: 1200px;
   margin: 60px auto 0;
@@ -133,6 +171,7 @@ img {
 
 .add_drug_list {
   margin-top: 25px;
+  min-height: 292px;
 }
 
 .add_drug_list:after {
@@ -294,6 +333,7 @@ img {
 }
 
 .add_drug_entry li {
+  position: relative;
   cursor: pointer;
   padding-bottom: 10px;
   list-style: none;
@@ -321,6 +361,13 @@ img {
 
 .add_drug_detail p {
   margin: 4px 0;
+}
+
+.add_drug_chick {
+  display: inline-block;
+  position: absolute;
+  right: 50px;
+  top: 10px;
 }
 
 .add_drug_remarks {
