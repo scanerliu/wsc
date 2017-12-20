@@ -18,6 +18,11 @@ function renderList() {
             '        <a lid="' + item.drugNo + '" class="add_drug_edit" href="javascript:;">修改</a>\n' +
             '        <a lid="' + item.drugNo + '" class="add_drug_del" href="javascript:;">删除</a>\n' +
             '    </div>\n' +
+            '<input type="hidden" name="drugs['+i+'].drugNo" value="' + item.drugNo + '">'+
+            '<input type="hidden" name="drugs['+i+'].drug" value="' + item.drug + '">'+
+            '<input type="hidden" name="drugs['+i+'].specification" value="' + item.specification + '">'+
+            '<input type="hidden" name="drugs['+i+'].Dosage" value="' + item.Dosage + '">'+
+            '<input type="hidden" name="drugs['+i+'].administration" value="' + item.administration + '">'+       
             '</li>';
     });
     $('.add_drug_list ul').html(html)
@@ -63,7 +68,9 @@ $(document).ready(function () {
             $('#remarks').hide()
         }
         var url = "/wx/doctor/searchdrugs";
-        var loaddata = $("#searchform").serializeArray();
+        var keyword = $("#search_val").val();
+        var store = $("#selectdept").val();
+        var loaddata = {"keyword":keyword,"dept":store};
         $("#druglist").load(url,loaddata);
     });
 
@@ -169,11 +176,22 @@ $(document).ready(function () {
                 drug_category && drug_bed && drug_outpatient && drug_times &&
                 drug_name && drug_sex && drug_age && drug_weight && drug_anaphylaxis &&
                 drug_diagnosis && drug_physician && drug_examine && drug_pharmacist && drug_dispensing
+                
             ) {
                 console.log(drug.length,
                     drug_category, drug_bed, drug_outpatient, drug_times,
                     drug_name, drug_sex, drug_age, drug_weight, drug_anaphylaxis,
                     drug_diagnosis, drug_physician, drug_examine, drug_pharmacist, drug_dispensing);
+                var url = "/wx/doctor/doprescribe";
+                var postData = $("#addprescriptionform").serializeArray();
+                $.post(url,postData,function(data){
+                	if(data.error==1){
+                		alert("提交成功！")
+                	}else{
+                		alert("提交失败！")
+                	}
+                	
+                },'text');
             } else {
                 $('.verification_prompt').show();
                 $('.chick_prompt_mask').show();
@@ -190,9 +208,9 @@ $(document).ready(function () {
     $('.examine_click').on('click', function () {
         console.log();
         $.each($('.examine_click').find('img'), function (i, item) {
-            $(item).attr('src', './img/not_chick.png')
+            $(item).attr('src', '/wx/images/drug/not_chick.png')
         });
-        $($(this).find('img')[0]).attr('src', './img/chick.png');
+        $($(this).find('img')[0]).attr('src', '/wx/images/drug/chick.png');
         $('#reason').attr('placeholder', '');
         if ($('.examine_click').index($(this)) === 1) {
             $('#reason').attr('placeholder', '请填写不通过原因')

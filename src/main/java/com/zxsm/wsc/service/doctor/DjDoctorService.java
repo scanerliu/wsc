@@ -105,7 +105,7 @@ public class DjDoctorService {
 			criteria.add(Restrictions.eq(DjDoctor.sType, type, true));
 		
 		Integer utype = (Integer) searchMap.get(DjDoctor.sUtype);
-		if(type != null)
+		if(utype != null)
 			criteria.add(Restrictions.eq(DjDoctor.sUtype, utype, true));
 		
 		Boolean expressStatus = (Boolean) searchMap.get(DjDoctor.sIsOnline);
