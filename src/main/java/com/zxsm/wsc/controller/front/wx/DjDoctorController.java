@@ -46,7 +46,6 @@ import com.zxsm.wsc.entity.user.DjUFeedback;
 import com.zxsm.wsc.entity.user.DjUParam;
 import com.zxsm.wsc.entity.user.DjUser;
 import com.zxsm.wsc.search.DrugCriteria;
-import com.zxsm.wsc.search.PrescribeCriteria;
 import com.zxsm.wsc.service.doctor.DjDoctorService;
 import com.zxsm.wsc.service.doctor.DjPrescriptionService;
 import com.zxsm.wsc.service.employe.ECommonService;
