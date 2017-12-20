@@ -167,15 +167,15 @@ $(document).ready(function () {
             var drug_weight = $('#drug_weight').val();
             var drug_anaphylaxis = $('#drug_anaphylaxis').val();
             var drug_diagnosis = $('#drug_diagnosis').val();
-            var drug_physician = $('#drug_physician').val();
+           /* var drug_physician = $('#drug_physician').val();
             var drug_examine = $('#drug_examine').val();
             var drug_pharmacist = $('#drug_pharmacist').val();
-            var drug_dispensing = $('#drug_dispensing').val();
+            var drug_dispensing = $('#drug_dispensing').val();*/
             if (
                 drug.length &&
                 drug_category && drug_bed && drug_outpatient && drug_times &&
                 drug_name && drug_sex && drug_age && drug_weight && drug_anaphylaxis &&
-                drug_diagnosis && drug_physician && drug_examine && drug_pharmacist && drug_dispensing
+                drug_diagnosis /*&& drug_physician && drug_examine && drug_pharmacist && drug_dispensing*/
                 
             ) {
                 console.log(drug.length,
@@ -188,7 +188,7 @@ $(document).ready(function () {
                 	var result = eval("("+data+")");
                 	if(result.error==1){
                 		alert("处方提交成功！");
-                		window.location.href=="/wx/doctor/home";
+                		$(window).attr('location','/wx/doctor/home');
                 	}else{
                 		alert("处方提交失败:请稍后重新操作！")
                 	}

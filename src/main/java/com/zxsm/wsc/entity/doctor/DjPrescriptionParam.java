@@ -28,7 +28,10 @@ public class DjPrescriptionParam extends DjBaseEntity {
 	private String outpatientNo;
 	
 	// 日期
-	private Date preDate;
+	private Date starDate;
+	
+	// 日期
+	private Date endDate;
 	
 	// 姓名
 	private String patName;
@@ -153,12 +156,20 @@ public class DjPrescriptionParam extends DjBaseEntity {
 		this.outpatientNo = outpatientNo;
 	}
 
-	public Date getPreDate() {
-		return preDate;
+	public Date getStarDate() {
+		return starDate;
 	}
 
-	public void setPreDate(Date preDate) {
-		this.preDate = preDate;
+	public void setStarDate(Date starDate) {
+		this.starDate = starDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public String getPatName() {
@@ -336,6 +347,4 @@ public class DjPrescriptionParam extends DjBaseEntity {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
-
 }
