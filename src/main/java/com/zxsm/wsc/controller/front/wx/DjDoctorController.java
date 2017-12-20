@@ -1,6 +1,8 @@
 package com.zxsm.wsc.controller.front.wx;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zxsm.wsc.common.DjKeys;
 import com.zxsm.wsc.common.WebUtils;
 import com.zxsm.wsc.common.Controllers.DjBaseController;
@@ -30,6 +34,7 @@ import com.zxsm.wsc.entity.ad.DjAd;
 import com.zxsm.wsc.entity.common.DjOUpdateParam;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDoctorParam;
+import com.zxsm.wsc.entity.doctor.DjDrug;
 import com.zxsm.wsc.entity.goods.DjGoods;
 import com.zxsm.wsc.entity.management.DjNaviItem;
 import com.zxsm.wsc.entity.order.DjOrder;
@@ -37,7 +42,9 @@ import com.zxsm.wsc.entity.user.DjAddress;
 import com.zxsm.wsc.entity.user.DjUFeedback;
 import com.zxsm.wsc.entity.user.DjUParam;
 import com.zxsm.wsc.entity.user.DjUser;
+import com.zxsm.wsc.search.DrugCriteria;
 import com.zxsm.wsc.service.doctor.DjDoctorService;
+import com.zxsm.wsc.service.employe.ECommonService;
 import com.zxsm.wsc.service.goods.DjAdService;
 import com.zxsm.wsc.service.management.DjNaviItemService;
 import com.zxsm.wsc.service.order.DjOrderService;
@@ -51,6 +58,8 @@ import com.zxsm.wsc.service.user.DjUPointService;
 import com.zxsm.wsc.service.user.DjUScanService;
 import com.zxsm.wsc.service.user.DjUserRelationsService;
 import com.zxsm.wsc.service.user.DjUserService;
+import com.zxsm.wsc.vo.DeptVO;
+import com.zxsm.wsc.vo.DrugVO;
 
 @Controller
 @RequestMapping(value = "/wx/doctor")
@@ -100,6 +109,9 @@ public class DjDoctorController extends DjBaseController
 
 	@Autowired
 	private DjUCashService cashSvs;
+	
+	@Autowired
+	private ECommonService eCommonSvs;
 
 	// 医生分类
 	@RequestMapping("/cate")
@@ -278,7 +290,7 @@ public class DjDoctorController extends DjBaseController
 		return user;
 	}
 	/**
-	 * 开处方
+	 * 开处方开始页面
 	 * @param param
 	 * @param map
 	 * @param req
@@ -299,7 +311,50 @@ public class DjDoctorController extends DjBaseController
 		}
 		DjDoctor djDoctor = doctorSvs.findOne(doctor.getId());
 		map.addAttribute("doctor",djDoctor);
+		//获取所有门店信息
+		List<DeptVO> deptList = eCommonSvs.selectDeptAll();
+		map.addAttribute("deptList",deptList);
 		return "/wx/doctor/doctor_prescribe";
+	}
+	/**
+	 * 开处方开始页面
+	 * @param param
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/searchdrugs")
+	public String searchdrugs(DrugCriteria dc, DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		List<DjDrug> drugList = eCommonSvs.selectDrugByDrug(dc);
+		List<DrugVO> drugList2 = new ArrayList<DrugVO>();
+		if(null!=drugList){
+			ObjectMapper mapper = new ObjectMapper();
+			for(DjDrug drug : drugList){
+				DrugVO drug2 = DrugVO.convertDjDrugToDrugVO(drug);
+				try {
+					String json = mapper.writeValueAsString(drug);
+					drug2.setJsonstr(URLEncoder.encode(json));
+				} catch (JsonProcessingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					continue;
+				}
+				drugList2.add(drug2);				
+			}
+		}
+		map.addAttribute("drugList",drugList2);
+		return "/wx/doctor/doctor_drugs";
 	}
 	//
 	//	//基本资料
