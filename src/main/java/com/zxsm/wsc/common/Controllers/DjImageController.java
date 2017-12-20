@@ -54,6 +54,36 @@ public class DjImageController
         os.flush();
         os.close();
     }
+    /*
+     * 返回处方图片
+     */
+    @RequestMapping(value = "/images/cf/{name:.+}", method = RequestMethod.GET)
+    @ResponseBody
+    public void getcfPic(@PathVariable String name, HttpServletResponse resp)
+            throws IOException {
+        if (null == name) {
+            return;
+        }
+
+//        String path = DjKeys.imagePath + "/";
+
+        FileInputStream fis = new FileInputStream(path +"cf/"+ name);
+
+        int size = fis.available(); // 得到文件大小
+
+        byte data[] = new byte[size];
+
+        fis.read(data); // 读数据
+
+        fis.close();
+
+        resp.setContentType("image/png");
+
+        OutputStream os = resp.getOutputStream();
+        os.write(data);
+        os.flush();
+        os.close();
+    }
     
     
 
