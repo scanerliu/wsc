@@ -138,7 +138,7 @@ $(document).ready(function(){
 		<dd>视频咨询医生、药师</dd>
 	</dl>
 	</a>
-	<a href="#">
+	<a href="/wx/drug/cate">
 	<dl class="">
 		<dt><img src="/wx/images/doctor/i1.png"></dt>
 		<dd>处方专区</dd>

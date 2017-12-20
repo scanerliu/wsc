@@ -1,0 +1,50 @@
+.apothecary,.doctor{
+	padding-top: 86px;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.apothecary .title{
+	padding: 0 2%;
+	width: 96%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+}
+.apothecary .title img{
+	float: left;
+	height: 0.6rem;
+	width: auto;
+}
+.apothecary .title span{
+	margin-left: 10px;
+	display: block;
+	float: left;
+	width: 50%;
+	height: 0.6rem;	
+	font-size: 0.35rem;
+}
+.apothecary .title a{
+	float: right;
+	color: #62b7f3;
+	font-size: 0.35rem;
+}
+.apothecary .title a::after{
+	content: " >";
+	color: #999999;
+}
+.apothecarylist{
+	padding: 20px 0;
+}
+.apothecarylist ul li{
+	padding: 0 3%;
+	float: left;
+	width: 44%;
+	
+}
+.apothecarylist ul li img{
+	width: 100%;
+}
+
+.doctor{
+	padding-top: 20px;
+}

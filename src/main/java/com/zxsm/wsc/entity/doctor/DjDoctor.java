@@ -19,6 +19,7 @@ public class DjDoctor extends DjBaseEntity
 	public static final String sIsOnline="isOnline";
 	public static final String sCat = "cat";
 	public static final String sType = "type";
+	public static final String sUtype = "uType";
 	
 	
 	@Id

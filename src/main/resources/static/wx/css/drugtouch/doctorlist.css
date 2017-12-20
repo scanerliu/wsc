@@ -1,0 +1,102 @@
+.doctorlist{
+	padding-top: 66px;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.doctorlist ul li{
+	position: relative;
+	padding: 20px 20px 0 20px;
+	width: calc(100% - 40px);
+	border-bottom: 1px solid #e0e0e0;
+}
+.doctorlist ul li .doctor_info{
+	height: 1.2rem;
+}
+.doctorlist ul li .doctor_info .doctor_img{
+	position: relative;
+	float: left;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+.doctorlist ul li .doctor_info .doctor_img img{
+	width: 1.2rem;
+	height: 1.2rem;
+}
+.doctorlist ul li .doctor_info span.doctor_state{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0.9rem;
+	width: 0.3rem;
+	height: 0.3rem;
+	border-radius: 0.3rem;
+}
+.doctorlist ul li .doctor_info span.state1{
+	background: #FF0000;
+}
+.doctorlist ul li .doctor_info span.state1 i{
+	display: block;
+	margin-top:0.12rem ;
+	margin-left: 0.05rem;
+	height: 0.05rem;
+	width: 0.2rem;
+	background: #FFFFFF;
+}
+.doctorlist ul li .doctor_info span.state2{
+	background: #39d167;
+}
+
+.doctor_infos{
+	margin-left: 0.15rem;
+	float: left;
+	width: calc(100% - 1.2rem - 10px);
+	height: 1.2rem;
+}
+.doctor_infos .name{
+	padding: 0.2rem 0 0.1rem 0;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.3rem;
+}
+.doctor_infos .name a{
+	font-size: 0.3rem;
+}
+.doctor_infos .name span{
+	margin-left: 5px;
+	padding: 2px 5px;
+	font-size: 0.2rem;
+	color: #FFFFFF;
+	background: #62b7f3;
+	border-radius: 3px;
+}
+.doctor_infos .synopsis{
+	width: 100%;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.22rem;
+	color: #999999;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.doctorlist ul li p{
+	height: 1rem;
+	line-height: 1rem;
+	text-align: left;
+	color: #666666;
+	font-size: 0.22rem;
+}
+.doctorlist ul li p a{
+	display: block;
+	margin-top: 0.1rem;
+	float: right;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	width: 1.5rem;
+	color: #FFFFFF;
+	font-size: 0.45rem;
+	text-align: center;
+	background: #5a4496;
+	border-radius: 0.4rem;
+}
