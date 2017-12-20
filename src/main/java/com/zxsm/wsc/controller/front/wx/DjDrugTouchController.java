@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import com.zxsm.wsc.common.Controllers.DjBaseController;
 import com.zxsm.wsc.common.UtilsTools.DjTools;
 import com.zxsm.wsc.entity.doctor.DjDoctor;
 import com.zxsm.wsc.entity.doctor.DjDoctorParam;
+import com.zxsm.wsc.entity.doctor.DjPrescription;
 import com.zxsm.wsc.entity.doctor.DjPrescriptionParam;
 import com.zxsm.wsc.entity.management.DjNaviItem;
 import com.zxsm.wsc.entity.user.DjUser;
@@ -158,9 +160,24 @@ public class DjDrugTouchController extends DjBaseController
 		catch (Exception e)
 		{
 			res.put("error", 1);
+			res.put("message", "读取错误");
 		}
 		
 		return res;
+	}
+	
+	// 审核单列表
+	@RequestMapping("/precheck")
+	public String prechecklist(DjPrescriptionParam param,ModelMap map)
+	{
+		if(!isLogin())
+			return URL_RedirectLogin;
+		DjUser user = getUserInfo();
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put("store", user.getRealName());
+		List<DjPrescription> preList = preSvs.find(searchMap);
+		
+		return "/wx/drug/precheck_list";
 	}
 	
 }

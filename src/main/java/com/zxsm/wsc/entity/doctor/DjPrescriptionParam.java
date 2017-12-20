@@ -336,5 +336,6 @@ public class DjPrescriptionParam extends DjBaseEntity {
 	public void setType(Integer type) {
 		this.type = type;
 	}
+	
 
 }

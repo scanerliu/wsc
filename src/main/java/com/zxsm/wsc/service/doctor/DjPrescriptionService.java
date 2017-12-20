@@ -102,6 +102,10 @@ public class DjPrescriptionService {
 			if(preNo != null)
 				criteria.add(Restrictions.like(DjPrescription.sPreNo, preNo, true));
 			
+			String store = (String) searchMap.get(DjPrescription.sStore);
+			if(store != null)
+				criteria.add(Restrictions.like(DjPrescription.sStore, preNo, true));
+			
 			Date preDate = (Date) searchMap.get(DjPrescription.sPreDate);
 			if(preDate != null)
 				criteria.add(Restrictions.eq(DjPrescription.sPreDate, preDate, true));
@@ -164,4 +168,16 @@ public class DjPrescriptionService {
 		}
 		
 		
+		
+		/**
+		 * 处方查找
+		 * @param cri
+		 * @return
+		 */
+		public List<DjPrescription> find(Map<String,Object> searchMap)
+		{
+			Criteria<DjPrescription> criteria = initCriteria(searchMap);
+			
+			return preRepo.findAll(criteria);
+		}
 }

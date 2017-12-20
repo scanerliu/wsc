@@ -106,6 +106,15 @@
 			req.onload = function(event){
 				if(this.status === 200){
 					console.log(this.response);//请求成功后打印返回的结果
+					var  res= this.response;
+					var jsonS = $.parseJSON(res);
+					if(jsonS.error == 0)
+					{
+						alert('上传成功');
+						location.href="/wx/drug/precheck";
+					}
+					else
+					   alert(jsonS.message);
 				}
 			}
 			req.send(formData);
