@@ -434,7 +434,7 @@ public class DjDoctorController extends DjBaseController
 	 * @return
 	 */
 	@RequestMapping(value="/searchprescribes")
-	public String searchprescribes(DjPrescriptionParam sc, DjDoctorParam param,ModelMap map,HttpServletRequest req,HttpSession session)
+	public String searchprescribes(DjPrescriptionParam sc, ModelMap map,HttpServletRequest req,HttpSession session)
 	{
 		Map<String, Object> res = new HashMap<String, Object>();
 		res.put("error", 0);
@@ -453,6 +453,33 @@ public class DjDoctorController extends DjBaseController
 		List<DjPrescription> prescList = prescriptionService.find(searchMap);
 		map.addAttribute("prescList",prescList);
 		return "/wx/doctor/doctor_prescribelistbody";
+	}
+	
+	/**
+	 * 处方详情页
+	 * @param id
+	 * @param map
+	 * @param req
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/prescribeitem{id}")
+	public String prescribeitem(@PathVariable("id") Long id, ModelMap map,HttpServletRequest req,HttpSession session)
+	{
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("error", 0);
+		
+		DjDoctor doctor = isLogin(session,req);
+		
+		if(doctor == null)
+		{
+			return "redirect:/wx/doctor/login";
+		}
+		DjPrescription prescript = prescriptionService.findOne(id);
+		if(null!=prescript && doctor.getId().equals(prescript.getDocId())){
+			map.addAttribute("prescript",prescript);
+		}
+		return "/wx/doctor/doctor_prescribedetail";
 	}
 	//
 	//	//基本资料

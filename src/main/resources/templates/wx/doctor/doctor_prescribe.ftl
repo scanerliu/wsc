@@ -16,13 +16,6 @@
 <link href="/wx/css/date.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="/wx/js/jquery-date.js"></script>
-<script type="text/javascript">
-
-$(function (){
-	
-});
-</script>
-
 </head>
 <body>
 <div class="drug">
