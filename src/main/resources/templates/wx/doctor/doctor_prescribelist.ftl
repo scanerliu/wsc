@@ -22,7 +22,7 @@
     <div class="add_drug lssue">
         <div class="lssue_logo">
             <img src="/wx/images/drug/logo.png" alt="">
-            <h4>真善美执业医师</h4>
+            <h4>重庆京西医院执业医师</h4>
         </div>
         <div class="lssue_condition">
         	<form id="searchform">
