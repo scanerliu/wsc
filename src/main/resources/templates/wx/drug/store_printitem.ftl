@@ -16,23 +16,12 @@
 <link href="/wx/css/date.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="/wx/js/jquery-date.js"></script>
-<script type="text/javascript" src="/wx/js/jquery.printPage.js"></script>
 </head>
 <body>
 <div class="drug">
     <div class="add_drug lssue">
-        <div class="lssue_logo">
-            <img src="/wx/images/drug/logo.png" alt="">
-            <h4>门店处方单列表</h4>
-        </div>
         <div class="examine">
             <div class="examine_l">
-                <div class="examine_info">
-                    <p>所属门店：<span>${prescript.store!''}</span></p>
-                    <p>医生：<span>${prescript.docName!''}</span></p>
-                </div>
-
-
                 <div class="add_drug_l bg_unimportance">
                     <div class="add_drug_type">
                         <div id="add_drug_tp" class="add_drug_tp">普通</div>
@@ -134,71 +123,8 @@
                     </div>
                 </div>
             </div>
-            <div class="examine_r">
-                <p class="examine_title">审核结果:</p>
-                <label class="examine_click">
-                    <img src="/wx/images/drug/not_chick.png" alt="">
-                    <span>通过</span>
-                </label>
-                <label class="examine_click">
-                    <img src="/wx/images/drug/not_chick.png" alt="">
-                    <span>不通过</span>
-                </label>
-                <div class="add_drug_remarks_space examine_quarantine">
-                    <span class="prompt">*原因:</span>
-                    <form id="formId" method="POST" action="/wx/examine/update">
-                    <textarea id="reason" name="mark"></textarea>
-					<input type="hidden" value="${doctor.autograph!''}" name="phaImg">
-					<input type="hidden" value="${doctor.name!''}" name="phaName">
-					<input type="hidden" value="${prescript.id?c}" name="id">
-					<input type="hidden" id="choseId" value="" name="passStatus">
-					</form>
-                </div>
-            </div>
-            <#-- <div class="not_through">
-                <img class="not_through_icon" src="./img/wait.png" alt="">
-                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
-                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
-            </div>-->
-        </div>
-    </div>
-    <div class="add_drug_bottom">
-        <div class="add_drug_submit2">
-            <a href="/wx/store">
-            <button id="cancel" class="add_drug_submit1">返回</button>
-            </a>
-        </div>
-        <div class="add_drug_submit2">
-            <button type="button" class="btnPrint" href="/wx/store/printitem${prescript.id?c}">打印</button>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript">
-// 审核单选
-$('.examine_click').on('click', function () {
-    console.log();
-    if ($('.examine_click').index($(this)) === 0) {
-    $("#choseId").val(1);
-    }
-    else
-    {
-     $("#choseId").val(0);
-    }
-    $.each($('.examine_click').find('img'), function (i, item) {
-        $(item).attr('src', '/wx/images/drug/not_chick.png')
-    });
-    $($(this).find('img')[0]).attr('src', '/wx/images/drug/chick.png');
-    $('#reason').attr('placeholder', '');
-    if ($('.examine_click').index($(this)) === 1) {
-        $('#reason').attr('placeholder', '请填写不通过原因')
-    }
-});
-$('#submits').on('click', function () {
-$("#formId").submit();
-});
-$(function (){
-	$(".btnPrint").printPage();
-});
-</script>
 </html>

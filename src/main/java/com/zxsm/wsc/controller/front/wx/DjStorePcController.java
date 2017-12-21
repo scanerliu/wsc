@@ -99,14 +99,14 @@ public class DjStorePcController extends DjBaseController {
 	}
 	
 	/**
-	 * 处方详情页
+	 * 打印处方
 	 * @param id
 	 * @param map
 	 * @param req
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value="/prescribeitem{id}")
+	@RequestMapping(value="/printitem{id}")
 	public String prescribeitem(@PathVariable("id") Long id, ModelMap map,HttpServletRequest req,HttpSession session)
 	{
 		Map<String, Object> res = new HashMap<String, Object>();
@@ -124,7 +124,7 @@ public class DjStorePcController extends DjBaseController {
 		if(null!=prescript && user.getRealName().equals(prescript.getStore())){
 			map.addAttribute("prescript",prescript);
 		}
-		return "/wx/drug/store_prescribeitem";
+		return "/wx/drug/store_printitem";
 	}
 
 	@RequestMapping("/{did}")
