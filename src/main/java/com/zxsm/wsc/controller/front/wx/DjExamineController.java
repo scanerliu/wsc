@@ -77,11 +77,13 @@ public class DjExamineController extends DjBaseController
 		{
 			return "redirect:/wx/doctor/login";
 		}
+		
 		Map<String ,Object>searchMap = new HashMap<String,Object>();
 		searchMap.put(DjPrescription.sStatus, sc.getStatus());
 		searchMap.put(DjPrescription.sPassStatus, sc.getPassStatus());
 		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
 		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
+		searchMap.put(DjPrescription.sPhaId, doctor.getId());
 		List<DjPrescription> prescList = preSvs.find(searchMap);
 		map.addAttribute("prescList",prescList);
 		return "/wx/drug/doctor_prescribelistbody";

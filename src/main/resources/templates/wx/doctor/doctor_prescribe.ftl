@@ -195,7 +195,8 @@
         <div class="add_drug_submit">
             <button id="submits" type="button">提交</button>
             <a href="/wx/doctor/prescribelist">
-            <button id="cancel" type="button" class="add_drug_submit1">取消</button></a>
+            <button id="cancel" class="add_drug_submit1" type="button">取消</button>
+            </a>
         </div>
     </div>
     </form>

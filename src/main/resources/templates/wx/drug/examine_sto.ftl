@@ -70,9 +70,6 @@
 					<input type="hidden" value="${doc.name!''}" name="phaName">
 					<input type="hidden" value="${pre.id?c}" name="id">
 					<input type="hidden" id="choseId" value="" name="passStatus">
-					<input type="hidden" value="" name="">
-					<input type="hidden" value="" name="">
-					<input type="hidden" value="" name="">
 					</form>
                 </div>
             </div>
@@ -80,8 +77,11 @@
     </div>
     <div class="add_drug_bottom">
         <div class="add_drug_submit2">
-            <button id="submits">提交</button>
-            <button id="cancel" class="add_drug_submit1">取消</button>
+        	<button id="submits">提交</button>
+            <a href="/wx/examine">
+            <button id="cancel" class="add_drug_submit1">返回</button>
+            <#-- <button id="cancel" class="add_drug_submit1" type="button">返回</button> -->
+            </a>
         </div>
     </div>
 </div>

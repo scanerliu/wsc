@@ -95,9 +95,9 @@ public class DjPrescriptionService {
 		{
 			if (searchMap == null || searchMap.isEmpty())
 				return null;
-
+			
 			Criteria<DjPrescription> criteria = new Criteria<DjPrescription>();
-
+			criteria.setOrderByDesc("initDate");
 			String patName = (String) searchMap.get(DjPrescription.sPatName);
 			if(patName != null)
 				criteria.add(Restrictions.like(DjPrescription.sPatName, patName, true));
@@ -110,6 +110,14 @@ public class DjPrescriptionService {
 			if(store != null)
 				criteria.add(Restrictions.like(DjPrescription.sStore, preNo, true));
 			
+			Long docId = (Long) searchMap.get(DjPrescription.sDocId);
+			if(docId != null)
+				criteria.add(Restrictions.eq(DjPrescription.sDocId, docId, true));
+			
+			Long phaId = (Long) searchMap.get(DjPrescription.sPhaId);
+			if(phaId != null)
+				criteria.add(Restrictions.eq(DjPrescription.sPhaId, phaId, true));
+			
 			Date startDate = (Date) searchMap.get(DjPrescription.sStartDate);
 			if(startDate != null)
 				criteria.add(Restrictions.gte(DjPrescription.sPreDate, startDate, true));
@@ -121,10 +129,6 @@ public class DjPrescriptionService {
 			Integer status = (Integer) searchMap.get(DjPrescription.sStatus);
 			if(status != null)
 				criteria.add(Restrictions.eq(DjPrescription.sStatus, status, true));
-			
-			Long docId = (Long) searchMap.get(DjPrescription.sDocId);
-			if(docId != null)
-				criteria.add(Restrictions.eq(DjPrescription.sDocId, docId, true));
 			
 			Integer passStatus = (Integer) searchMap.get(DjPrescription.sPassStatus);
 			if(passStatus != null)
