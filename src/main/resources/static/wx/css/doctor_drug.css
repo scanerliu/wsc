@@ -157,8 +157,8 @@ img {
 
 .staff_space1 img {
     position: absolute;
-    top: -5px;
-    right: 0px;
+    top: -8px;
+    right: 40px;
     width: 50px;
     height: 26px;
 }
@@ -490,6 +490,7 @@ img {
     margin-left: 50px;
     color: #333 !important;
     background-color: #f5f5f5 !important;
+    float: left;
 }
 
 /*开方列表*/
