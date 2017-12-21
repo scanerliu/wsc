@@ -19,7 +19,7 @@
             <td class="lssue_list_td_w2">${presc.preNo!''}</td>
             <td class="lssue_list_td_w1"><#if presc.preDate??>${presc.preDate?string('yyyy-MM-dd')}</#if></td>
             <td class="lssue_list_td_w1"><#if presc.status?? && presc.status==1>已审核<#else>待审核</#if></td>
-            <td class="lssue_list_td_w1"><#if presc.passStatus?? && presc.passStatus==2>已通过<#else>未通过</#if></td>
+            <td class="lssue_list_td_w1"><#if presc.passStatus?? && presc.passStatus==1>已通过<#else>未通过</#if></td>
             <td class="lssue_list_td_w1"><a href="/wx/doctor/prescribeitem${presc.id!''}">详情</a></td>
         </tr>
         </#list>

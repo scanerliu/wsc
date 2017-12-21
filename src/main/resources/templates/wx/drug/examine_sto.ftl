@@ -92,11 +92,11 @@
 $('.examine_click').on('click', function () {
     console.log();
     if ($('.examine_click').index($(this)) === 0) {
-    $("#choseId").val(0);
+    $("#choseId").val(1);
     }
     else
     {
-     $("#choseId").val(1);
+     $("#choseId").val(0);
     }
     $.each($('.examine_click').find('img'), function (i, item) {
         $(item).attr('src', '/wx/images/drug/not_chick.png')

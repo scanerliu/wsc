@@ -39,7 +39,7 @@
                 <select id="select_result" name="passStatus" class="lssue_condition_item_quarantine">
                     <option value="">--请选择结果--</option>
                     <option value="0">未通过</option>
-                    <option value="2">已通过</option>
+                    <option value="1">已通过</option>
                 </select>
             </label>
             <label class="lssue_condition_item">

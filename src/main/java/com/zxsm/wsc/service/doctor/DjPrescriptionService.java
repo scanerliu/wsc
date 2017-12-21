@@ -73,7 +73,8 @@ public class DjPrescriptionService {
 			preRepo.save(e);
 			if(null!=e.getDrugs() && e.getDrugs().size() >0){
 			    drugRepo.save(e.getDrugs());
-			}			
+			}
+			e.setType(0);
 			return null;
 		}
 
@@ -198,6 +199,7 @@ public class DjPrescriptionService {
 			pre.setPhaImg(param.getPhaImg());
 			pre.setPhaName(param.getPhaName());
 			pre.setPassStatus(param.getPassStatus());
+			pre.setStatus(1);
 			pre.setMark(param.getMark());
 			preRepo.save(pre);
 			return true;

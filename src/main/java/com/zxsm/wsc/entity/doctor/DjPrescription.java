@@ -133,7 +133,7 @@ public class DjPrescription extends DjBaseEntity {
     @Column
     private Integer status;
     
-    // 处方通过状态 0:未通过 2: 已通过
+    // 处方通过状态 0:未通过 1: 已通过
     @Column
     private Integer passStatus;
     

@@ -131,6 +131,21 @@
                     </div>
                 </div>
             </div>
+            <div class="examine_r">
+                <p class="examine_title">审核结果:</p>
+                <label class="examine_click">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
+                    <span>通过</span>
+                </label>
+                <label class="examine_click">
+                    <img src="/wx/images/drug/not_chick.png" alt="">
+                    <span>不通过</span>
+                </label>
+                <div class="add_drug_remarks_space examine_quarantine">
+                    <span class="prompt">*原因:</span>
+                    <textarea id="reason"></textarea>
+                </div>
+            </div>
             <div class="not_through">
                 <img class="not_through_icon" src="./img/wait.png" alt="">
                 <h4 class="not_through_title">状态：<span>等待审核</span></h4>
