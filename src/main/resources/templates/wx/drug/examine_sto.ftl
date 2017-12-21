@@ -44,7 +44,7 @@
                 <div class="add_drug_staff bg_important">
                     <div class="staff_space">
                         <label class="add_drug_in staff_space1">
-                            <span>医师:</span>
+                            <span>药师:</span>
                             <input id="drug_physician" class="bg_important" type="text">
                             <img src="/wx/images/drug/name.png" alt="">
                         </label>
