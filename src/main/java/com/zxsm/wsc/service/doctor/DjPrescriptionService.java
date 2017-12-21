@@ -108,6 +108,14 @@ public class DjPrescriptionService {
 			if(store != null)
 				criteria.add(Restrictions.like(DjPrescription.sStore, preNo, true));
 			
+			Long docId = (Long) searchMap.get(DjPrescription.sDocId);
+			if(docId != null)
+				criteria.add(Restrictions.eq(DjPrescription.sDocId, docId, true));
+			
+			Long phaId = (Long) searchMap.get(DjPrescription.sPhaId);
+			if(phaId != null)
+				criteria.add(Restrictions.eq(DjPrescription.sPhaId, phaId, true));
+			
 			Date startDate = (Date) searchMap.get(DjPrescription.sStartDate);
 			if(startDate != null)
 				criteria.add(Restrictions.gte(DjPrescription.sPreDate, startDate, true));
