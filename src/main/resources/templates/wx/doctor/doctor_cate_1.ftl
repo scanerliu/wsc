@@ -103,7 +103,7 @@ $(document).ready(function(){
 
 
 <!-- 20171031 -->
-<#-- 
+<#if !user.uRole?? || user.uRole != 1>
 <section class="top_link">
 	<a href="/wx/doctor/list">
 	<dl class="top_l_left">
@@ -128,7 +128,7 @@ $(document).ready(function(){
 		</a>
 	</section>
 </section>
- -->
+ <#else>
  <section class="top_link">
  	<section class="top_l_left">
 	<a href="/wx/doctor/list">
@@ -162,6 +162,7 @@ $(document).ready(function(){
 		</a>
 	</section>
 </section>
+</#if>
 <!-- 20171031 end -->
 
 

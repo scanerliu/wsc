@@ -66,7 +66,6 @@
 }
 
 .pharmacist_info {
-    padding-top: .88rem;
     width: 100%;
     height: calc(100vh - .88rem);
     overflow: auto;
@@ -74,9 +73,222 @@
     background-color: #f5f5f5;
 }
 
-.pharmacist_info_img {
-    padding: .4rem .2rem 1rem ;
+.pharmacist_form {
+    margin-top: 1.2rem;
+    margin-bottom: .4rem;
+    background-color: #fff;
 }
+
+.pharmacist_btn1 , .pharmacist_btn2{
+    float: left;
+    height: .88rem;
+    width: 50%;
+    text-align: center;
+    font-size: .32rem;
+    letter-spacing: .14rem;
+}
+
+.pharmacist_btn1 {
+    color: #333;
+    background-color: #e0e0e0;
+}
+
+.pharmacist_btn2 {
+    color: #fff;
+    background-color: #5a4496;
+}
+
+
+.add_drug_type {
+    height: .56rem;
+}
+
+.add_drug_tp {
+    margin-top: .2rem;
+    float: right;
+    width: .6rem;
+    height: .36rem;
+    line-height: .36rem;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    color: #333333;
+    font-size: .22rem;
+    margin-right: .6rem;
+    text-align: center;
+}
+
+.add_drug_title {
+    text-align: center;
+}
+
+.add_drug_title h4 {
+    margin: 0;
+    font-size: .3rem;
+    font-family: '微软雅黑';
+}
+
+.add_drug_title p {
+    margin: 0;
+    font-size: .24rem;
+    font-family: '微软雅黑';
+}
+
+.add_drug_info, .add_drug_list {
+    padding: 0 .2rem;
+    text-align: left;
+}
+
+.add_drug_info {
+    margin-top: .3rem;
+    text-align: left;
+}
+
+.add_drug_info_no {
+    font-size: .24rem;
+    font-family: '黑体';
+    font-weight: 600;
+}
+
+.add_drug_from {
+    margin: .2rem 0;
+}
+
+.add_drug_in {
+    margin: .2rem .3rem .2rem 0;
+    padding: .2rem 0;
+}
+
+.staff_space1 {
+    display: inline-block;
+    width: 45%;
+    padding: 0;
+}
+
+.staff_space1 span {
+    font-size: .26rem;
+}
+
+.staff_space1_input {
+    font-size: .24rem;
+    margin-left: 5px;
+    width: 1rem;
+    outline: none;
+    border: 1px solid #333;
+    border-width: 0 0 1px 0;
+    background-color: #fff;
+}
+
+.staff_space1 img {
+    height: .28rem;
+    vertical-align: middle;
+    width: .8rem;
+    margin-left: 5px;
+}
+
+.add_drug_in span {
+    font-size: .24rem;
+}
+
+.add_drug_in input {
+    font-size: .24rem;
+    margin-left: 5px;
+    width: 1.8rem;
+    outline: none;
+    border: 1px solid #333;
+    border-width: 0 0 1px 0;
+    background-color: #fff;
+}
+
+.add_drug_in1 {
+    width: calc(100% - 1.5rem) !important;
+}
+
+.add_drug_in2 {
+    width: calc(100% - 1.75rem) !important;
+}
+
+.add_drug_list {
+    margin-top: .25rem;
+    min-height: 2.92rem;
+}
+
+.add_drug_list:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.add_drug_list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.add_drug_list li {
+    list-style: none;
+    border-bottom: 1px solid #e0e0e0;
+    margin: .1rem 0;
+}
+
+.add_drug_list li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.no_drug {
+    text-align: center;
+    padding: 1rem;
+}
+
+.no_drug img {
+    vertical-align: middle;
+}
+
+.no_drug span {
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add_drug_item {
+    float: left;
+    width: calc(100% - 1.6rem);
+}
+
+.add_drug_item_name {
+    font-size: .24rem;
+    color: #333;
+    margin: 5px 0;
+}
+
+.add_drug_item_explain {
+    font-size: .22rem;
+    color: #666;
+    margin: 5px 0;
+    text-indent: 10px;
+}
+
+.bg_important {
+    background-color: #f3e5f6;
+}
+
+.bg_commonly {
+    background-color: #fafafa;
+}
+
+.bg_unimportance {
+    background-color: #fff;
+}
+
+.add_drug_staff {
+    padding: 0 .20rem;
+    height: 1.12rem;
+    text-align: left;
+}
+
+.staff_space {
+}
+
 
 .examine_record {
     padding-top: .88rem;
@@ -128,6 +340,14 @@
 .examine_record_name, .examine_record_name span, .examine_record_time, .examine_record_time span {
     font-size: .26rem;
     margin-bottom: .1rem;
+}
+
+.examine_record_name {
+    position: relative;
+}
+
+.examine_record_result {
+    float: right;
 }
 
 .query {
