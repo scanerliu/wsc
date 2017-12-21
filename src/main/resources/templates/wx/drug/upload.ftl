@@ -50,8 +50,8 @@
         <button class="camera_btn">重拍</button>
     </div>
 </div>
-<footer>
-    <span class="upload" id="upload">上传</span>
+<footer  id="upload">
+    <span class="upload">上传</span>
 </footer>
 </body>
 <script>
@@ -96,32 +96,41 @@
         $('#camera').val('');
     });
 
-    $('#upload').on('click', function () {
-        var img = $('#show_img').attr('src');
-        if (img) {
-            //console.log(img);
-            var formData =new FormData(document.forms[0]);
-            var req = new XMLHttpRequest();
-			req.open("POST", "/wx/drug/upload");//使用POST发送请求
-			req.onload = function(event){
-				if(this.status === 200){
-					console.log(this.response);//请求成功后打印返回的结果
-					var  res= this.response;
-					var jsonS = $.parseJSON(res);
-					if(jsonS.error == 0)
-					{
-						alert('上传成功');
-						location.href="/wx/drug/precheck";
-					}
-					else
-					   alert(jsonS.message);
+    $('#upload').on('click', function () {Fuplaod();});
+    
+    
+function Fuplaod()
+{
+    var img = $('#show_img').attr('src');
+    $("#upload").off();
+    if (img) {
+        //console.log(img);
+        var formData =new FormData(document.forms[0]);
+        var req = new XMLHttpRequest();
+		req.open("POST", "/wx/drug/upload");//使用POST发送请求
+		req.onload = function(event){
+			if(this.status === 200){
+				console.log(this.response);//请求成功后打印返回的结果
+				var  res= this.response;
+				var jsonS = $.parseJSON(res);
+				if(jsonS.error == 0)
+				{
+					alert('上传成功');
+					location.href="/wx/drug/precheck";
+					
 				}
+				else
+				{
+				   alert(jsonS.message);
+				   $('#upload').on('click', function () {Fuplaod();});
+				   }
 			}
-			req.send(formData);
-			req = null;
-        }else{
-            alert('未找到图片')
-        }
-    })
+		}
+		req.send(formData);
+		req = null;
+    }else{
+        alert('未找到图片')
+    }
+}
 </script>
 </html>
