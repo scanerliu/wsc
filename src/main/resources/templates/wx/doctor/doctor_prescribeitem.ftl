@@ -38,7 +38,7 @@
                     </div>
                     <div class="add_drug_title">
                         <h4>重庆京西医院</h4>
-                        <p>(处方伐)</p>
+                        <p>(处方笺)</p>
                     </div>
                     <div class="add_drug_info">
                         <span class="add_drug_info_no">NO:${prescript.preNo!''}</span>
