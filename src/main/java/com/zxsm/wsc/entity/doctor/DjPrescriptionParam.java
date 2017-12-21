@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.zxsm.wsc.search.SearchCriteria;
-
 public class DjPrescriptionParam {
 	
 	private Long id;

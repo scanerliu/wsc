@@ -30,6 +30,7 @@
         业药师审核了您的处方单，并且通过了审核。
         </#if></#if>
         </p>
+        <p>备注：${pre.mark!'无'}</p>
         <p class="wait_examine_time">提交时间：${pre.preDate}</p>
     </div>
     <div class="wait_examine_img">

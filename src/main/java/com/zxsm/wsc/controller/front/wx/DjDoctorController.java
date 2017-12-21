@@ -145,6 +145,7 @@ public class DjDoctorController extends DjBaseController
 			map.addAttribute("share_param",jsTicket);
 		}
 		
+		map.addAttribute("user", getUserInfo());
 		return "/wx/doctor/doctor_cate_1";
 	}
 
