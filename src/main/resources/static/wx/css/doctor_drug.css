@@ -70,6 +70,19 @@ img {
     outline: none;
 }
 
+.close_chick_prompt2 {
+    cursor: pointer;
+    width: 140px;
+    height: 34px;
+    font-size: 16px;
+    text-align: center;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #5a4496;
+    outline: none;
+}
+
 .add_drug {
     width: 1200px;
     margin: 60px auto 0;
