@@ -197,6 +197,13 @@ public class DjPrescriptionService {
 			return preRepo.findAll(criteria);
 		}
 		
+		public Page<DjPrescription> find(Map<String,Object> searchMap,int page, int size)
+		{
+			PageRequest pageRequest = new PageRequest(page, size, new Sort(Direction.DESC, "initDate"));
+			Criteria<DjPrescription> criteria = initCriteria(searchMap);
+			return preRepo.findAll(criteria,pageRequest);
+		}
+		
 		
 		/**
 		 * 审核时更新
