@@ -112,12 +112,16 @@
                             <label class="add_drug_in staff_space1">
                                 <span>医师:</span>
                                 <input id="drug_physician" class="bg_important" type="text">
-                                <img src="/wx/images/drug/name.png" alt="">
+                                <#if prescript.docImg??>
+                                <img src="${prescript.docImg!''}" alt="医生签名">
+                                </#if>
                             </label>
                             <label class="add_drug_in staff_space1">
                                 <span>药&emsp;&emsp;师:</span>
                                 <input id="drug_pharmacist" class="bg_important" type="text">
-                                <img src="/wx/images/drug/name.png" alt="">
+                                <#if prescript.phaImg??>
+                                <img src="${prescript.phaImg!''}" alt="药生签名">
+                                </#if>
                             </label>
                         </div>
                         <div class="add_drug_from">
