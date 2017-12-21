@@ -152,8 +152,12 @@ function changeStatus()
 				<p><span>当前咨询人数</span></p>
 				<p><input id="mobileId" type="tel"  <#if number??>value="${number?c}"</#if>/></p>
 				<p><input type="button" id="btnSmsCode" value="确定" class="m_btn1"></p>
-				<p><a href="/wx/doctor/prescribe">开处方</a>
-				<p><a href="/wx/doctor/prescribelist">处方列表</a>
+				<br/>
+				<br/>
+				<p><a href="/wx/doctor/prescribe"><button class="m_btn1" type="button">开处方</button></a>
+				<br/>
+				<br/>
+				<p><a href="/wx/doctor/prescribelist"><button class="m_btn1" type="button">处方列表</button></a>
 				<label>
 将心比心，用我的爱心:诚心:细心，换您的舒心:放心:安心。
 医生对我胜如亲人，能设身处地为患者着想，牺牲自己的休息时间及时为我解除了病痛，令我太感动了……
