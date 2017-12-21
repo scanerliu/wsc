@@ -16,22 +16,10 @@
 <link href="/wx/css/date.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="/wx/js/jquery-date.js"></script>
+<script type="text/javascript" src="/wx/js/pop.js"></script>
 </head>
 <body>
 <div class="drug">
-    <div class="chick_prompt_mask"></div>
-    <div class="chick_prompt">
-        <p>当前处方中有该门店药品，请先删除药品后才能更改门店</p>
-        <button class="close_chick_prompt">知道了</button>
-    </div>
-    <div class="pharmacist_prompt">
-        <p>请选择审核药师</p>
-        <button class="close_chick_prompt">知道了</button>
-    </div>
-    <div class="verification_prompt">
-        <p>表单不完整</p>
-        <button class="close_chick_prompt">知道了</button>
-    </div>
     <div class="add_drug">
     	<form id="addprescriptionform">
         <div class="add_drug_l">
