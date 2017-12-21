@@ -75,6 +75,8 @@ public class DjPrescriptionService {
 			    drugRepo.save(e.getDrugs());
 			}
 			e.setType(0);
+			e.setPassStatus(0);
+			e.setStatus(0);
 			return null;
 		}
 
@@ -119,6 +121,10 @@ public class DjPrescriptionService {
 			Integer status = (Integer) searchMap.get(DjPrescription.sStatus);
 			if(status != null)
 				criteria.add(Restrictions.eq(DjPrescription.sStatus, status, true));
+			
+			Long docId = (Long) searchMap.get(DjPrescription.sDocId);
+			if(docId != null)
+				criteria.add(Restrictions.eq(DjPrescription.sDocId, docId, true));
 			
 			Integer passStatus = (Integer) searchMap.get(DjPrescription.sPassStatus);
 			if(passStatus != null)

@@ -34,6 +34,7 @@ public class DjPrescription extends DjBaseEntity {
 	public static final String sPassStatus = "passStatus";
 	public static final String sType = "type";
 	public static final String sStore = "store";
+	public static final String sDocId = "docId";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

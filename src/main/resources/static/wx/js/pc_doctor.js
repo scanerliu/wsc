@@ -188,7 +188,7 @@ $(document).ready(function () {
                 	var result = eval("("+data+")");
                 	if(result.error==1){
                 		alert("处方提交成功！");
-                		$(window).attr('location','/wx/doctor/home');
+                		$(window).attr('location','/wx/doctor/prescribelist');
                 	}else{
                 		alert("处方提交失败:请稍后重新操作！")
                 	}

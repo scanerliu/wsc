@@ -457,6 +457,7 @@ public class DjDoctorController extends DjBaseController
 		}
 		Map<String ,Object>searchMap = new HashMap<String,Object>();
 		searchMap.put(DjPrescription.sStatus, sc.getStatus());
+		searchMap.put("docId", doctor.getId());
 		searchMap.put(DjPrescription.sPassStatus, sc.getPassStatus());
 		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
 		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
@@ -488,6 +489,8 @@ public class DjDoctorController extends DjBaseController
 		DjPrescription prescript = prescriptionService.findOne(id);
 		if(null!=prescript && doctor.getId().equals(prescript.getDocId())){
 			map.addAttribute("prescript",prescript);
+		}else{
+			prescript = new DjPrescription();
 		}
 		return "/wx/doctor/doctor_prescribeitem";
 	}

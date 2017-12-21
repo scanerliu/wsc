@@ -27,7 +27,7 @@
         <div class="examine">
             <div class="examine_l">
                 <div class="examine_info">
-                    <p>所属门店：<span>${prescript.store!''}</span></p>
+                    <p>所属门店：<span><#if prescript?? && prescript.store??>${prescript.store}</#if></span></p>
                     <p>医生：<span>${prescript.docName!''}</span></p>
                 </div>
 
@@ -111,11 +111,13 @@
                         <div class="add_drug_from staff_space">
                             <label class="add_drug_in staff_space1">
                                 <span>医师:</span>
-                                <img src="./img/name.png" alt="">
+                                <input id="drug_physician" class="bg_important" type="text">
+                                <img src="/wx/images/drug/name.png" alt="">
                             </label>
                             <label class="add_drug_in staff_space1">
                                 <span>药&emsp;&emsp;师:</span>
                                 <input id="drug_pharmacist" class="bg_important" type="text">
+                                <img src="/wx/images/drug/name.png" alt="">
                             </label>
                         </div>
                         <div class="add_drug_from">
@@ -132,9 +134,21 @@
                 </div>
             </div>
             <div class="not_through">
-                <img class="not_through_icon" src="./img/wait.png" alt="">
-                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
-                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
+            	<#if prescript.status?? && prescript.status == 0>
+	                <img class="not_through_icon" src="/wx/images/drug/wait.png" alt="">
+	                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
+	                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
+                <#else>
+                	<#if prescript.passStatus?? && prescript.passStatus == 1>
+		                <img class="not_through_icon" src="/wx/images/drug/not_through.png" alt="">
+		                <h4 class="not_through_title">审核结果：<span>不通过</span></h4>
+		                <p class="not_through_txt"><span class="prompt">*原因:</span><span>A类药品不适合用于此症状</span></p>
+		            <#else>
+		            	<img class="not_through_icon" src="/wx/images/drug/through.png" alt="">
+		                <h4 class="not_through_title">审核结果：<span>已通过</span></h4>
+		                <p class="not_through_txt"><span class="prompt">备注信息:</span><span>${prescript.mark!''}</span></p>
+		            </#if>
+                </#if>
             </div>
         </div>
     </div>

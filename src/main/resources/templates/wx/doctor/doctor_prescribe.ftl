@@ -104,7 +104,7 @@
                 <div class="add_drug_from staff_space">
                     <label class="add_drug_in staff_space1">
                         <span>医师:</span>
-                        <input id="drug_physician" class="add_drug_in3" type="text">
+                        <input id="drug_physician" class="add_drug_in3" type="text" value="${doctor.name!''}" readonly="readonly">
                     </label>
                     <label class="add_drug_in staff_space1">
                         <span>审核:</span>
@@ -194,7 +194,8 @@
         </div>
         <div class="add_drug_submit">
             <button id="submits" type="button">提交</button>
-            <button id="cancel" class="add_drug_submit1">取消</button>
+            <a href="/wx/doctor/prescribelist">
+            <button id="cancel" type="button" class="add_drug_submit1">取消</button></a>
         </div>
     </div>
     </form>
