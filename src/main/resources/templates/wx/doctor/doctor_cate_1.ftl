@@ -140,7 +140,7 @@ $(document).ready(function(){
 	</a>
 	<a href="/wx/drug/cate">
 	<dl class="">
-		<dt><img src="/wx/images/doctor/i1.png"></dt>
+		<dt><img src="/wx/images/doctor/i4.png"></dt>
 		<dd>处方专区</dd>
 		<dd>在线咨询处方单</dd>
 	</dl>

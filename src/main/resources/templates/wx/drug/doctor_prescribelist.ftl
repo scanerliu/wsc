@@ -50,7 +50,7 @@
             <label class="lssue_condition_item">
                 <input id="drug_times2" name="endDate" class="date_input" type="text">
             </label>
-            <div id="lssue_search_sub" class="lssue_search_btn" onclick="searchPrescriptions(true)">
+            <div id="lssue_search_sub" class="lssue_search_btn" onclick="searchPrescriptions_pha(true)">
                 <img src="/wx/images/drug/search1.png" alt="">
             </div>
             </form>

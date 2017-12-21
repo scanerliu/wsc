@@ -22,7 +22,7 @@
     <div class="add_drug lssue">
         <div class="lssue_logo">
             <img src="/wx/images/drug/logo.png" alt="">
-            <h4>真善美执业医师</h4>
+            <h4>真善美执业药师</h4>
         </div>
         <div class="examine">
             <div class="examine_l">
@@ -111,11 +111,13 @@
                         <div class="add_drug_from staff_space">
                             <label class="add_drug_in staff_space1">
                                 <span>医师:</span>
-                                <img src="./img/name.png" alt="">
+                                <input id="drug_pharmacist" class="bg_important" type="text">
+                                <img src="${prescript.docImg!''}" alt="">
                             </label>
                             <label class="add_drug_in staff_space1">
                                 <span>药&emsp;&emsp;师:</span>
                                 <input id="drug_pharmacist" class="bg_important" type="text">
+                                <img src="${prescript.phaImg!''}" alt="">
                             </label>
                         </div>
                         <div class="add_drug_from">

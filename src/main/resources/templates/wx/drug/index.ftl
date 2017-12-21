@@ -33,8 +33,8 @@
 			</div>
 			<div class="apothecarylist">
 				<ul>
-					<li><a href=""><img src="/wx/images/drugtouch/doctor1.png"/></a></li>
-					<li><a href=""><img src="/wx/images/drugtouch/doctor2.png"/></a></li>
+					<li><a href="/wx/drug/precheckdoc"><img src="/wx/images/drugtouch/doctor1.png"/></a></li>
+					<li><a href="/wx/drug/precheckdoc"><img src="/wx/images/drugtouch/doctor2.png"/></a></li>
 				</ul>
 			</div>
 		</div>

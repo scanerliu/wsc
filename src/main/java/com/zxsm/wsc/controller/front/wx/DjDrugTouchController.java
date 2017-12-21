@@ -175,13 +175,30 @@ public class DjDrugTouchController extends DjBaseController
 		DjUser user = getUserInfo();
 		Map<String ,Object>searchMap = new HashMap<String,Object>();
 		searchMap.put(DjPrescription.sStore, user.getRealName());
+		searchMap.put(DjPrescription.sType, 1);
 		List<DjPrescription> preList = preSvs.find(searchMap);
 		map.put("preList", preList);
 		
 		return "/wx/drug/precheck_list";
 	}
 	
-	// 审核单列表
+	// 医生开方单列表
+	@RequestMapping("/precheckdoc")
+	public String prechecklistDoc(DjPrescriptionParam param,ModelMap map)
+	{
+		if(!isLogin())
+			return URL_RedirectLogin;
+		DjUser user = getUserInfo();
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put(DjPrescription.sStore, user.getRealName());
+		searchMap.put(DjPrescription.sType, 0);
+		List<DjPrescription> preList = preSvs.find(searchMap);
+		map.put("preList", preList);
+		
+		return "/wx/drug/precheck_list_doc";
+	}
+	
+	// 审核单详情
 	@RequestMapping("/precheck/{did}")
 	public String precheck(DjPrescriptionParam param,ModelMap map,@PathVariable Long did)
 	{
@@ -194,6 +211,21 @@ public class DjDrugTouchController extends DjBaseController
 		map.put("pre", preList);
 
 		return "/wx/drug/precheck";
+	}
+	
+	// 医生开方单详情
+	@RequestMapping("/precheckdoc/{did}")
+	public String precheckDoc(DjPrescriptionParam param,ModelMap map,@PathVariable Long did)
+	{
+		if(!isLogin())
+			return URL_RedirectLogin;
+		DjUser user = getUserInfo();
+		Map<String ,Object>searchMap = new HashMap<String,Object>();
+		searchMap.put(DjPrescription.sStore, user.getRealName());
+		DjPrescription preList = preSvs.findOne(did);
+		map.put("pre", preList);
+
+		return "/wx/drug/precheck_doc";
 	}
 	
 	
