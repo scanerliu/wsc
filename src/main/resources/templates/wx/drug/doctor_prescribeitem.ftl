@@ -143,23 +143,55 @@
                 </label>
                 <div class="add_drug_remarks_space examine_quarantine">
                     <span class="prompt">*原因:</span>
-                    <textarea id="reason"></textarea>
+                    <form id="formId" method="POST" action="/wx/examine/update">
+                    <textarea id="reason" name="mark"></textarea>
+					<input type="hidden" value="${doc.autograph!''}" name="phaImg">
+					<input type="hidden" value="${doc.name!''}" name="phaName">
+					<input type="hidden" value="${pre.id?c}" name="id">
+					<input type="hidden" id="choseId" value="" name="passStatus">
+					</form>
                 </div>
             </div>
-            <div class="not_through">
+            <#-- <div class="not_through">
                 <img class="not_through_icon" src="./img/wait.png" alt="">
                 <h4 class="not_through_title">状态：<span>等待审核</span></h4>
                 <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="add_drug_bottom">
         <div class="add_drug_submit2">
-            <a href="/wx/doctor/prescribelist">
-            <button id="cancel" class="add_drug_submit1" type="button">返回</button>
+        	<button id="submits">提交</button>
+            <a href="/wx/examine">
+            <button id="cancel" class="add_drug_submit1">返回</button>
+            <#-- <button id="cancel" class="add_drug_submit1" type="button">返回</button> -->
             </a>
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript">
+// 审核单选
+$('.examine_click').on('click', function () {
+    console.log();
+    if ($('.examine_click').index($(this)) === 0) {
+    $("#choseId").val(1);
+    }
+    else
+    {
+     $("#choseId").val(0);
+    }
+    $.each($('.examine_click').find('img'), function (i, item) {
+        $(item).attr('src', '/wx/images/drug/not_chick.png')
+    });
+    $($(this).find('img')[0]).attr('src', '/wx/images/drug/chick.png');
+    $('#reason').attr('placeholder', '');
+    if ($('.examine_click').index($(this)) === 1) {
+        $('#reason').attr('placeholder', '请填写不通过原因')
+    }
+});
+$('#submits').on('click', function () {
+$("#formId").submit();
+});
+</script>
 </html>

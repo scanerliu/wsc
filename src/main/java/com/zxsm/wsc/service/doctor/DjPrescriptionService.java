@@ -93,9 +93,9 @@ public class DjPrescriptionService {
 		{
 			if (searchMap == null || searchMap.isEmpty())
 				return null;
-
+			
 			Criteria<DjPrescription> criteria = new Criteria<DjPrescription>();
-
+			criteria.setOrderByDesc("initDate");
 			String patName = (String) searchMap.get(DjPrescription.sPatName);
 			if(patName != null)
 				criteria.add(Restrictions.like(DjPrescription.sPatName, patName, true));
