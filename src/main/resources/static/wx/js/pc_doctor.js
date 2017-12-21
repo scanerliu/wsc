@@ -37,14 +37,19 @@ $(document).ready(function () {
         if (e.target.value) {
             // 在已经选择门店，且添加了药品后，在点击更改门店时则提示
             if (list.length) {
-                $('.chick_prompt').show();
-                $('.chick_prompt_mask').show();
+            	pop.init({
+                    size: [360, 180],
+                    html: '<div style="margin: 50px">' +
+                    '<p>当前处方中有该门店药品，请先删除药品后才能更改门店</p>\n' +
+                    '<button class="close_chick_prompt">知道了</button></div>'
+                })
+                $('#search').hide();
             } else {
                 store = e.target.value;
                 $(this).val(store)
                 $("#selectdept").val(store);
+                $('#search').show();
             }
-            $('#search').show()
         }
     });
 
@@ -54,11 +59,19 @@ $(document).ready(function () {
     });
 
     // 隐藏提示
-    $('.close_chick_prompt').on('click', function () {
+    /*$('.close_chick_prompt').on('click', function () {
         $('.chick_prompt').hide();
         $('.pharmacist_prompt').hide();
         $('.verification_prompt').hide();
         $('.chick_prompt_mask').hide();
+    });*/
+    // 隐藏提示
+    $(document).on('click', '.close_chick_prompt', function () {
+        pop.clean();
+    });
+    $(document).on('click', '.close_chick_prompt2', function () {
+    	pop.clean();
+    	$(window).attr('location','/wx/doctor/prescribelist');
     });
 
     // 点击搜索
@@ -149,8 +162,14 @@ $(document).ready(function () {
     // 提交
     $('#submits').on('click', function () {
         if (!pharmacist) {
-            $('.pharmacist_prompt').show();
-            $('.chick_prompt_mask').show();
+            /*$('.pharmacist_prompt').show();
+            $('.chick_prompt_mask').show();*/
+        	 pop.init({
+                 size: [360, 180],
+                 html: '<div style="margin: 50px">' +
+                 '<p>请选择审核药师</p>\n' +
+                 '<button class="close_chick_prompt">知道了</button></div>'
+             });
         } else {
             var drug = [];
             $.each($('.add_drug_list li'), function (i, item) {
@@ -184,19 +203,56 @@ $(document).ready(function () {
                     drug_diagnosis, drug_physician, drug_examine, drug_pharmacist, drug_dispensing);
                 var url = "/wx/doctor/doprescribe";
                 var postData = $("#addprescriptionform").serializeArray();
+                pop.init({
+                    size: [400, 260],
+                    html: '<div id="wait" style="margin: 50px"><div class="sub_spinner">\n' +
+                    '            <div class="spinner_container container1">\n' +
+                    '                <div class="circle1"></div>\n' +
+                    '                <div class="circle2"></div>\n' +
+                    '                <div class="circle3"></div>\n' +
+                    '                <div class="circle4"></div>\n' +
+                    '            </div>\n' +
+                    '            <div class="spinner_container container2">\n' +
+                    '                <div class="circle1"></div>\n' +
+                    '                <div class="circle2"></div>\n' +
+                    '                <div class="circle3"></div>\n' +
+                    '                <div class="circle4"></div>\n' +
+                    '            </div>\n' +
+                    '            <div class="spinner_container container3">\n' +
+                    '                <div class="circle1"></div>\n' +
+                    '                <div class="circle2"></div>\n' +
+                    '                <div class="circle3"></div>\n' +
+                    '                <div class="circle4"></div>\n' +
+                    '            </div>\n' +
+                    '        </div></div>'
+                });
                 $.post(url,postData,function(data){
                 	var result = eval("("+data+")");
                 	if(result.error==1){
-                		alert("处方提交成功！");
-                		$(window).attr('location','/wx/doctor/prescribelist');
+                        $('#wait').html('<div class="sub_prompt_ok">\n' +
+                            '            <img src="/wx/images/drug/through.png" alt="">\n' +
+                            '            <p class="sub_prompt_title">处方提交成功</p>\n' +
+                            //'            <p>审核编号：<span>171201214455555</span></p>\n' +
+                            '            <p>药师将会为你尽快审核</p>\n' +
+                            '            <button class="close_chick_prompt2">知道了</button>\n' +
+                            '        </div>');
                 	}else{
-                		alert("处方提交失败:请稍后重新操作！")
+                		$('#wait').html('<div class="sub_prompt_ok">\n' +
+                        '            <img src="/wx/images/drug/through.png" alt="">\n' +
+                        '            <p class="sub_prompt_title">处方提交失败:请稍后重新操作！</p>\n' +
+                        //'            <p>审核编号：<span>171201214455555</span></p>\n' +
+                        '            <button class="close_chick_prompt">知道了</button>\n' +
+                        '        </div>');
                 	}
                 	
                 },'text');
             } else {
-                $('.verification_prompt').show();
-                $('.chick_prompt_mask').show();
+            	pop.init({
+                    size: [360, 180],
+                    html: '<div style="margin: 50px">' +
+                    '<p>表单不完整</p>\n' +
+                    '<button class="close_chick_prompt">知道了</button></div>'
+                })
             }
         }
     })

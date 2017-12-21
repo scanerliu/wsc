@@ -3,15 +3,7 @@ package com.zxsm.wsc.entity.doctor;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.zxsm.wsc.entity.common.DjBaseEntity;
 
 public class DjPrescriptionParam {
 	
