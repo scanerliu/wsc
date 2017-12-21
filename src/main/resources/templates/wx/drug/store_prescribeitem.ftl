@@ -39,7 +39,7 @@
                     </div>
                     <div class="add_drug_title">
                         <h4>重庆京西医院</h4>
-                        <p>(处方伐)</p>
+                        <p>(处方笺)</p>
                     </div>
                     <div class="add_drug_info">
                         <span class="add_drug_info_no">NO:${prescript.preNo!''}</span>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div class="examine_r">
+            <#-- <div class="examine_r">
                 <p class="examine_title">审核结果:</p>
                 <label class="examine_click">
                     <img src="/wx/images/drug/not_chick.png" alt="">
@@ -154,6 +154,23 @@
 					<input type="hidden" id="choseId" value="" name="passStatus">
 					</form>
                 </div>
+            </div>-->
+             <div class="not_through">
+            	<#if prescript.status?? && prescript.status == 1>
+            		<#if prescript.passStatus?? && prescript.passStatus == 1>
+            			<img class="not_through_icon" src="/wx/images/drug/through.png" alt="">
+		                <h4 class="not_through_title">审核结果：<span>已通过</span></h4>
+		                <p class="not_through_txt"><span class="prompt">备注信息:</span><span>${prescript.mark!''}</span></p>
+		            <#else>
+		            	<img class="not_through_icon" src="/wx/images/drug/not_through.png" alt="">
+		                <h4 class="not_through_title">审核结果：<span>不通过</span></h4>
+		                <p class="not_through_txt"><span class="prompt">*原因:</span><span>${prescript.mark!''}</span></p>
+		            </#if>
+                <#else>
+                	<img class="not_through_icon" src="/wx/images/drug/wait.png" alt="">
+	                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
+	                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
+                </#if>
             </div>
             <#-- <div class="not_through">
                 <img class="not_through_icon" src="./img/wait.png" alt="">
