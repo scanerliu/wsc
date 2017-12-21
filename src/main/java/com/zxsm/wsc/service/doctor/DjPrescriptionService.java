@@ -108,7 +108,7 @@ public class DjPrescriptionService {
 			
 			String store = (String) searchMap.get(DjPrescription.sStore);
 			if(store != null)
-				criteria.add(Restrictions.like(DjPrescription.sStore, preNo, true));
+				criteria.add(Restrictions.eq(DjPrescription.sStore, store, true));
 			
 			Long docId = (Long) searchMap.get(DjPrescription.sDocId);
 			if(docId != null)

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>待审核详情页</title>
+    <link rel="stylesheet" href="style/style.css"/>
+    <link rel="stylesheet" href="style/wait_examine.css"/>
+</head>
+<body>
+<header>
+    <a href="" class="back"></a>
+    <h3>待审核详情页</h3>
+    <a href="" class="record">审方记录</a>
+</header>
+<div class="wait_examine">
+    <div class="wait_examine_icon">
+        <img src="./images/wait.png" alt="">
+        <span class="wait_color">待审核</span>
+    </div>
+    <div class="wait_examine_info">
+        <p class="wait_examine_txt"><span class="wait_examine_name">冯玲玲</span>执业药师正在为您审核处方单，请稍后再 来查询结果！</p>
+        <p class="wait_examine_time">提交时间：12-15 01:16</p>
+    </div>
+    <div class="wait_examine_img">
+        <img src="./images/p.png" alt="">
+    </div>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 640) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</html>

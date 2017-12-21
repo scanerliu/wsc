@@ -20,7 +20,7 @@
             <td class="lssue_list_td_w1"><#if presc.preDate??>${presc.preDate?string('yyyy-MM-dd')}</#if></td>
             <td class="lssue_list_td_w1"><#if presc.status?? && presc.status==1>已审核<#else>待审核</#if></td>
             <td class="lssue_list_td_w1"><#if presc.passStatus?? && presc.passStatus==1>已通过<#else>未通过</#if></td>
-            <td class="lssue_list_td_w1"><a href="/wx/examine/${presc.id?c}">详情</a></td>
+            <td class="lssue_list_td_w1"><a href="/wx/store/${presc.id?c}">详情</a></td>
         </tr>
         </#list>
         </#if>
@@ -32,7 +32,7 @@
 <input type="hidden" value="<#if sc.starDate??>${sc.starDate?string('yyyy-MM-dd')}</#if>" name="starDate">
 <input type="hidden" value="<#if sc.starDate??>${sc.endDate?string('yyyy-MM-dd')}</#if>" name="endDate">
 <#if prescList?? && prescList?size gt 0>
-<#assign pageId="Prescription" />
+<#assign pageId="PrescriptionStore" />
 <#include "../commonpostpage.ftl" />
 <div class="clear"></div>
 </#if>

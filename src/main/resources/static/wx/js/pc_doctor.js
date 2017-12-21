@@ -309,3 +309,23 @@ function searchPrescriptions_pha(f){
 	}
 	$("#results").load(url,loadData);
 }
+//分页函数
+function fnGotoPagePrescription(num){
+	searchPrescriptions_pha(false);
+}
+
+//分页函数 - 门店
+function fnGotoPagePrescriptionStore(num){
+	searchPrescriptions_pha(false);
+}
+// -- 门店
+function searchPrescriptions_store(f){
+	var url = "/wx/store/searchprescribes";
+	var loadData = null;
+	if(f){
+		loadData = $("#searchform").serializeArray();
+	}else{
+		loadData = $("#listform").serializeArray();
+	}
+	$("#results").load(url,loadData);
+}

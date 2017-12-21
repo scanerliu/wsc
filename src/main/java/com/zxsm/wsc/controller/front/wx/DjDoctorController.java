@@ -201,24 +201,44 @@ public class DjDoctorController extends DjBaseController
 	{
 		if(StringUtils.isNotBlank(param.username))
 		{
-			DjDoctor doctor = doctorSvs.findByUsernameAndPassword(param.username, param.password);
-			if(doctor != null && doctor.getStatus() == 1)
+			if(param.username.startsWith("MD"))
 			{
-				session.setAttribute("doctor", doctor);
-				if(param.cate != null)
+				if(StringUtils.isNotBlank(param.getUsername()) && StringUtils.isNotBlank(param.getPassword()))
 				{
-					CookiesUtil.setCookie(res, "pc_username", param.getUsername(), 24*60*60*100);
-					CookiesUtil.setCookie(res, "pc_password", param.getPassword(), 24*60*60*100);
+					DjUser user = userSvs.findEnableUser(param.getUsername());
+					if(user != null && user.verityPassword(param.password))
+					{
+						user.setLastLoginTime(new Date());
+						userSvs.save(user);
+						userLogin(user, res);
+						if(StringUtils.isNotBlank(param.returnTo) && !param.returnTo.equalsIgnoreCase("/wx/login"))
+							return "/wx/doctor/doctor_login";
+						if(param.getUsername().contains("MD"))
+							return "redirect:/wx/store";
+					}
 				}
-				if(doctor.getuType() == 0)
-				return "redirect:/wx/doctor/home";
-				else
-					return "redirect:/wx/examine";
 			}
-			map.addAttribute("username", param.username);
-			map.addAttribute("error", "1");
+			else
+			{
+				DjDoctor doctor = doctorSvs.findByUsernameAndPassword(param.username, param.password);
+				if(doctor != null && doctor.getStatus() == 1)
+				{
+					session.setAttribute("doctor", doctor);
+					if(param.cate != null)
+					{
+						CookiesUtil.setCookie(res, "pc_username", param.getUsername(), 24*60*60*100);
+						CookiesUtil.setCookie(res, "pc_password", param.getPassword(), 24*60*60*100);
+					}
+					if(doctor.getuType() == 0)
+						return "redirect:/wx/doctor/home";
+					else
+						return "redirect:/wx/examine";
+				}
+				map.addAttribute("username", param.username);
+				map.addAttribute("error", "1");
+			}
 		}
-		
+
 		return "/wx/doctor/doctor_login";
 	}
 
