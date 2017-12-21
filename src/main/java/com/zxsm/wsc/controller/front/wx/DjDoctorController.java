@@ -484,7 +484,6 @@ public class DjDoctorController extends DjBaseController
 		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
 		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
 //		List<DjPrescription> prescList = prescriptionService.find(searchMap);
-		sc.setPageSize(2);
 		Page<DjPrescription> page = prescriptionService.find(searchMap,sc.getPageNo()-1, sc.getPageSize());
 		sc.setTotalCount(page.getTotalElements());
 		map.addAttribute("prescList",page.getContent());
