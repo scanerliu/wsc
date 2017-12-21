@@ -138,20 +138,20 @@
                 </div>
             </div>
             <div class="not_through">
-            	<#if prescript.status?? && prescript.status == 0>
-	                <img class="not_through_icon" src="/wx/images/drug/wait.png" alt="">
-	                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
-	                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
-                <#else>
-                	<#if prescript.passStatus?? && prescript.passStatus == 0>
-		                <img class="not_through_icon" src="/wx/images/drug/not_through.png" alt="">
-		                <h4 class="not_through_title">审核结果：<span>不通过</span></h4>
-		                <p class="not_through_txt"><span class="prompt">*原因:</span><span>${prescript.mark!''}</span></p>
-		            <#else>
-		            	<img class="not_through_icon" src="/wx/images/drug/through.png" alt="">
+            	<#if prescript.status?? && prescript.status == 1>
+            		<#if prescript.passStatus?? && prescript.passStatus == 1>
+            			<img class="not_through_icon" src="/wx/images/drug/through.png" alt="">
 		                <h4 class="not_through_title">审核结果：<span>已通过</span></h4>
 		                <p class="not_through_txt"><span class="prompt">备注信息:</span><span>${prescript.mark!''}</span></p>
+		            <#else>
+		            	<img class="not_through_icon" src="/wx/images/drug/not_through.png" alt="">
+		                <h4 class="not_through_title">审核结果：<span>不通过</span></h4>
+		                <p class="not_through_txt"><span class="prompt">*原因:</span><span>${prescript.mark!''}</span></p>
 		            </#if>
+                <#else>
+                	<img class="not_through_icon" src="/wx/images/drug/wait.png" alt="">
+	                <h4 class="not_through_title">状态：<span>等待审核</span></h4>
+	                <p class="not_through_txt"><span>药师正在审核，请耐心等待</span></p>
                 </#if>
             </div>
         </div>
