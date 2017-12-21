@@ -1,0 +1,98 @@
+.pension-page {
+    line-height: 34px;
+    height: 34px;
+    padding: 20px 0 40px;
+    text-align: right;
+}
+
+.pension-page ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-left, .page-right {
+    width: 64px;
+}
+
+.pension-page li {
+    display: inline-block;
+    min-width: 34px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 34px;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.pension-page a {
+    display: inline-block;
+    min-width: 34px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 34px;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pension-page-txt {
+    display: inline-block;
+    line-height: 34px;
+    font-size: 14px;
+    margin: 0 20px;
+    color: #333;
+}
+
+.pension-page-oper {
+    display: inline-block;
+    line-height: 34px;
+    font-size: 14px;
+    margin: 0 20px;
+    color: #333;
+}
+
+.pension-page-oper input {
+    height: 34px;
+    border: 1px solid #ddd;
+    width: 24px;
+    margin: 0 4px;
+    font-size: 14px;
+    padding: 0 6px;
+}
+
+.pension-page-oper button {
+    line-height: 34px;
+    padding: 0 18px;
+    background: #5a4496;
+    color: #fff;
+}
+
+.pension-page li:hover {
+    position: relative;
+    border: 1px solid #5a4496;
+    color: #5a4496;
+}
+
+.pension-page a {
+    color: #333;
+}
+
+.page-hover {
+    background-color: #5a4496 !important;
+    color: #fff !important;
+    border: 1px solid #5a4496 !important;
+    position: relative;
+}
+
+.page-go {
+    cursor: pointer;
+    line-height: 36px;
+    padding: 0 18px;
+    background: #5a4496;
+    color: #fff;
+    border: 0;
+    outline: none;
+}

@@ -12,7 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        <#if prescList??>
+        <#if prescList?? && prescList?size gt 0>
         <#list prescList as presc>
         <tr>
             <td class="lssue_list_td_w1">${presc_index+1!''}</td>
@@ -23,7 +23,25 @@
             <td class="lssue_list_td_w1"><a href="/wx/doctor/prescribeitem${presc.id?c}">详情</a></td>
         </tr>
         </#list>
+        <#else>
+        <tr>
+            <td colspan="6" class="lssue_list_td_w1" style="text-align:center;">暂无相关信息</td>
+        </tr>
         </#if>
         </tbody>
     </table>
 </div>
+<input type="hidden" value="${sc.status!''}" name="status">
+<input type="hidden" value="${sc.passStatus!''}" name="passStatus">
+<input type="hidden" value="<#if sc.starDate??>${sc.starDate?string('yyyy-MM-dd')}</#if>" name="starDate">
+<input type="hidden" value="<#if sc.starDate??>${sc.endDate?string('yyyy-MM-dd')}</#if>" name="endDate">
+<#if prescList?? && prescList?size gt 0>
+<#assign pageId="Prescriptions" />
+<#include "../commonpostpage.ftl" />
+<div class="clear"></div>
+</#if>
+<script>
+	$(function(){
+		
+	});
+</script>

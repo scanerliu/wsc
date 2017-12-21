@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -462,8 +463,12 @@ public class DjDoctorController extends DjBaseController
 		searchMap.put(DjPrescription.sPassStatus, sc.getPassStatus());
 		searchMap.put(DjPrescription.sStartDate,sc.getStarDate());
 		searchMap.put(DjPrescription.sEndDate,sc.getEndDate());
-		List<DjPrescription> prescList = prescriptionService.find(searchMap);
-		map.addAttribute("prescList",prescList);
+//		List<DjPrescription> prescList = prescriptionService.find(searchMap);
+		sc.setPageSize(2);
+		Page<DjPrescription> page = prescriptionService.find(searchMap,sc.getPageNo()-1, sc.getPageSize());
+		sc.setTotalCount(page.getTotalElements());
+		map.addAttribute("prescList",page.getContent());
+		map.addAttribute("sc",sc);
 		return "/wx/doctor/doctor_prescribelistbody";
 	}
 	

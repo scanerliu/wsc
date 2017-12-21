@@ -14,6 +14,7 @@
 
 <link href="/wx/css/doctor_drug.css" rel="stylesheet" type="text/css" />
 <link href="/wx/css/date.css" rel="stylesheet" type="text/css" />
+<link href="/wx/css/page.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/wx/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="/wx/js/jquery-date.js"></script>
 </head>
@@ -58,8 +59,10 @@
             </a>
             </form>
         </div>
+        <form id="listform">
         <div id="results">
         </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript" src="/wx/js/pc_doctor.js"></script>

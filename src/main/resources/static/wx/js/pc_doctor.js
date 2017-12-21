@@ -264,6 +264,26 @@ $(document).ready(function () {
     $($.date_input.initialize);
 });
 
+$.fn.extend({
+	loading:function(){
+		return this.each(function(){
+			$(this).html('数据加载中...');			
+		});
+	}
+});
+
+
+function formatInputInteger(obj,min,max){
+	var num = obj.value.replace(/\D/g,'');
+	if(num<min){
+		obj.value=min;
+	}else if(num>max){
+		obj.value=max;
+	}else{
+		obj.value = num;
+	}
+}
+
 function searchPrescriptions(f){
 	var url = "/wx/doctor/searchprescribes";
 	var loadData = null;
@@ -272,7 +292,12 @@ function searchPrescriptions(f){
 	}else{
 		loadData = $("#listform").serializeArray();
 	}
-	$("#results").load(url,loadData);
+	$("#results").loading().load(url,loadData);
+}
+
+//分页函数
+function fnGotoPagePrescriptions(num){
+	searchPrescriptions(false);
 }
 function searchPrescriptions_pha(f){
 	var url = "/wx/examine/searchprescribes";
