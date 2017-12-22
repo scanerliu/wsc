@@ -113,6 +113,11 @@
 			<artifactId>poi</artifactId>
 			<version>3.6</version>
 		</dependency>
+		<dependency>
+			<groupId>sql</groupId>
+			<artifactId>sql</artifactId>
+			<version>3.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>

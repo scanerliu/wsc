@@ -386,7 +386,12 @@ public class DjDoctorController extends DjBaseController
 				DrugVO drug2 = DrugVO.convertDjDrugToDrugVO(drug);
 				try {
 					String json = mapper.writeValueAsString(drug);
-					drug2.setJsonstr(URLEncoder.encode(json));
+					try {
+						drug2.setJsonstr(URLEncoder.encode(json, "utf-8"));
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (JsonProcessingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
